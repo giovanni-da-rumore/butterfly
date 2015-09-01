@@ -19,9 +19,10 @@ class Router extends Backbone.Router {
   }
 
   homePage () {
+    this.user = window.Butterfly.currentUser;
     let user = window.Butterfly.currentUser;
     let view = new UserShow({model: user});
-    this.swapViews("view", "profile");
+    this.swapViews(view, "profile");
   }
 
   users () {
@@ -35,12 +36,11 @@ class Router extends Backbone.Router {
 
 
   swapViews (view, page) {
-
     this._nav = new NavBar({page: page});
     this.$navBar.html(this._nav.render().$el);
-    // this._currentView && this._currentView.remove();
-    // this._currentView = view;
-    // this.$rootEl.html(view.render().$el);
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
+    this.$rootEl.html(view.render().$el);
   }
 
 
