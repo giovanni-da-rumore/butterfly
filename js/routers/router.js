@@ -1,4 +1,3 @@
-
 import User from '../models/user';
 import UserShow from '../views/user_show';
 import NavBar from '../views/nav_bar';

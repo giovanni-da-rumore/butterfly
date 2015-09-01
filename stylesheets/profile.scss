@@ -1,0 +1,211 @@
+.user-profile {
+  width: 900px;
+  margin: auto;
+  font-size: 14px;
+
+  h3  {
+    color: #05B8CC;
+    font-size: 16px;
+  }
+
+  .profile__left {
+    width: 440px;
+    float: left;
+    color: #A3A3A3;
+    margin-top: 30px;
+  }
+
+  .profile__prof-picture {
+    float: left;
+    width: 420px;
+    background: #EDEDED;
+
+
+      img {
+        float: left;
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin-right: 20px;
+        border: 1px solid #EDEDED;
+      }
+
+      .profile__pic-words {
+        display: block;
+        float: left;
+
+        padding: 8px;
+        padding-top: 19px;
+      }
+
+      h3 {
+        padding-bottom: 8px;
+      }
+
+      p {
+        color: #A3A3A3;
+      }
+
+      button {
+        font-size: 12px;
+        border-bottom: 1px solid #2ce6ce;
+        color: #2ce6ce;
+        cursor: pointer;
+      }
+    }
+
+    .form__button {
+      text-align: center;
+      padding: 5px 25px;
+      background: #00688B;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+
+    .profile__form {
+
+      float: left;
+      width: 420px;
+      margin-top: 30px;
+
+      h3 {
+        padding-bottom: 3px;
+        border-bottom: 1px solid #ccc;
+        width: 420px;
+      }
+
+      .profile__form__email {
+        color: #2ce6ce;
+        float: left;
+      }
+
+      .profile__form__email-sub {
+        font-size: 10px;
+        float: left;
+        margin-left: 3px;
+      }
+
+      label {
+        padding-top: 13px;
+        display: block;
+        font-size: 12px;
+      }
+
+      input {
+        width: 410px;
+        background: #fff;
+        padding: 5px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+
+
+  }
+
+  .profile__right {
+    width: 420px;
+    float: left;
+    margin-top: 161px;
+    margin-left: 25px;
+
+    .profile__groups {
+
+      h3 {
+        padding-bottom: 3px;
+        border-bottom: 1px solid #ccc;
+        width: 420px;
+      }
+
+
+    button {
+      @extend: .form__button;
+    }
+
+    }
+
+
+
+
+
+
+  }
+
+
+
+
+
+}
+
+
+// st typetext/template" id=user-show-template>
+//   <main class="user-profile">
+//   <section class="profile__left">
+//
+//     <div class="profile__prof-picture">
+//     <img class="profile__pic" src='<%= user.escape("picture")%>'/>
+// <div class="profile__pic-words">
+//   <h3 class="profile__pic__header">
+//     Your photo
+//   </h3>
+//   <p>
+//     Photo should be at least 300px X 300px
+//   </p>
+//   <button> Remove current photo</button>
+//
+// </div>
+
+//     </div>
+//     <form class="profile__form-form">
+//       <h3 profile__form-> Basic Information</h3>
+//       <label class="profile__form-label">
+//         First Name *
+//         <input type="text" name="user[first_name]" value="<%= user.escape('firstName')%>">
+//       </label>
+//
+//       <label class="profile__form-label">
+//         Last Name *
+//         <input type="text" name="user[last_name]" value="<%= user.escape('lastName') %>">
+//       </label>
+//
+//       <label class="profile__form-label">
+//         Company Title *
+//         <input type="text" name="user[title]" value="<%= user.escape('title') %>">
+//       </label>
+//
+//       <label class="profile__form-label">
+//         Email * (= User Name)
+//         <input type="text" name="user[email]" value="<%= user.escape('email') %>">
+//       </label>
+//
+//       <button class="form__button"> Update </button>
+//
+//     </form>
+//
+//     <form class="profile__form-password">
+//       <h3> Change passowrd</h3>
+//       <label class="profile__form--label">
+//         Type your new password
+//         <input type="password" name="user[password]" value="">
+//       </label>
+//
+//       <button class="form__button"> Update </button>
+//     </form>
+// </section>
+//
+// <section class="profile__right">
+//
+//   <section class="profile__groups">
+//     <h3> Groups </h3>
+//
+//     <ul class="profile__groups-list">
+//     </ul>
+//     <button class="groups__button"> Update </button>
+//   </section>
+// </section>
+//   </main>
+// </script>

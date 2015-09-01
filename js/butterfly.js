@@ -32,8 +32,10 @@ class Butterfly {
     }
 
     syncInfo (data) {
-      window.Butterfly.Users = new Users();
-      window.Butterfly.Users.set(data.users);
+      let users = new Users();
+      // let user = new Backbone.Model(data.users[1]);
+      let user1 = new User(data.users[1]);
+      users.add(data.users);
 
 
 
