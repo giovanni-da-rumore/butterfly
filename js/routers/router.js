@@ -11,7 +11,7 @@ class Router extends Backbone.Router {
     this.$rootEl = options.$rootEl;
     this.$navBar = options.$navBar;
     this.routes = {"": "homePage",
-      "profile": "homePage",
+      "profile": "profile",
       "groups":  "groups",
       "users":   "users"};
     this._bindRoutes()
@@ -19,18 +19,27 @@ class Router extends Backbone.Router {
   }
 
   homePage () {
-    this.user = window.Butterfly.currentUser;
-    let user = window.Butterfly.currentUser;
+    // this.user = window.Butterfly.currentUser;
+    let user = new User();
+    user.fetch();
     let view = new UserShow({model: user});
     this.swapViews(view, "profile");
   }
 
+  profile () {
+    let user = new User();
+    user.fetch();
+    let view = new UserShow({model: user});
+    this.swapViews(view, "profile");
+  }
+
+
   users () {
-    this.swapViews('view', 'users');
+    this.swapViews($("<div></div>"), 'users');
   }
 
   groups () {
-    this.swapViews('view', 'groups')
+    this.swapViews($("<div></div>"), 'groups');
 
   }
 
