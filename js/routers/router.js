@@ -19,12 +19,6 @@ class Router extends Backbone.Router {
 
   }
 
-  // homePage () {
-  //   let user = new User();
-  //   user.fetch();
-  //   let view = new UserShow({model: user});
-  //   this.swapViews(view, "profile");
-  // }
 
   profile () {
     let that = this;
@@ -32,7 +26,7 @@ class Router extends Backbone.Router {
     user.fetch();
     $.when(that.syncHelper.groups()).done(function (groups) {
       let view = new UserShow({model: user, collection: groups});
-      that.swapViews(view, 'users')
+      that.swapViews(view, 'profile')
     });
   }
 
@@ -48,8 +42,8 @@ class Router extends Backbone.Router {
   }
 
   groups (groups) {
-    let view = new UserShow({model: mod, collection: groups})
-    this.swapViews($("<div></div>"), 'groups');
+    // let view = new UserShow({model: mod, collection: groups})
+    // this.swapViews($("<div></div>"), 'groups');
 
   }
 
