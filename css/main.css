@@ -27,12 +27,12 @@ body {
   background: #F7F7F7;
   line-height: 1.3em; }
 
-header {
+.main-header {
   background-color: #2ce6ce;
   width: 1000px;
   padding: 10px 5px;
   margin: auto; }
-  header h3 {
+  .main-header h3 {
     display: block;
     width: 75px;
     height: 75px;

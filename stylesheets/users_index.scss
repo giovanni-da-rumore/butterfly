@@ -1,0 +1,63 @@
+.users-index-header {
+
+  width: 930px;
+  margin: auto;
+  color: #05B8CC;
+  border-bottom: 1px solid #ccc;
+  padding-top: 30px;
+
+  h3 {
+    float: left;
+    font-size: 16px;
+    padding: 10px;
+    padding-bottom: 5px;
+
+  }
+
+  .users-index__count {
+    float: right;
+    color: #2ce6ce;
+    margin-left: 8px;
+  }
+
+  .users-index__options {
+    float: right;
+
+    li {
+      padding: 5px 8px;
+      border-right: 1px solid #ccc;
+      float: left;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .users-index__options__add {
+      border-right: none;
+    }
+
+
+  }
+
+
+
+
+}
+
+
+
+
+// <header class="users-index-header">
+//   <h3>
+//     List of users <div class="users-index__count"> <%=length%>
+//   </h3>
+//
+//   <ul class="users-index__options">
+//     <li class="users-index__options__edit">edit</li>
+//     <li class="users-index__options__delete">delete</li>
+//     <li class="users-index__options__add">add users</li>
+//   </ul>
+//
+// </header>
+// <ul id="users-index">
+//
+// </ul>

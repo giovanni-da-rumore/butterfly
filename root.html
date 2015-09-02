@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/profile.css"/>
+    <link rel="stylesheet" href="css/users_index.css"/>
+    <link rel="stylesheet" href="css/user_item.css"/>
 
     <script src="dist/output.js"></script>
 	</head>
@@ -21,7 +23,7 @@
 
 
 
-    <header class="group">
+    <header class="main-header group">
       <h3 class="logo">
       </h3>
     </header>
@@ -113,6 +115,19 @@
 
 
 <script type="text/template" id="users-index-template">
+
+	<header class="users-index-header group">
+		<h3>
+			List of users <div class="users-index__count"> <%=length%>
+		</h3>
+
+		<ul class="users-index__options">
+			<li class="users-index__options__edit">edit</li>
+			<li class="users-index__options__delete">delete</li>
+			<li class="users-index__options__add">add users</li>
+		</ul>
+
+	</header>
 	<ul id="users-index">
 
 	</ul>

@@ -2,7 +2,7 @@ import Groups from '../collections/groups';
 import Users from '../collections/users';
 import UserItem from './user_item';
 
-class UserShow extends Backbone.View {
+class UserIndex extends Backbone.View {
 
 
   constructor (options) {
@@ -18,7 +18,6 @@ class UserShow extends Backbone.View {
 
   render () {
     this.$el.html(this.template());
-    debugger;
     this.collection.forEach(function (user) {
       let userView = new UserItem({model: user, groups: this.groups});
       this.$el.find("#users-index").append(userView.render().$el);
@@ -43,4 +42,4 @@ class UserShow extends Backbone.View {
 
 }
 
-export default UserShow;
+export default UserIndex;
