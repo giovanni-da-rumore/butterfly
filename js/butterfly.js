@@ -8,9 +8,6 @@ class Butterfly {
       Backbone.$.ajaxSetup({
           headers: {'Authorization' :'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40'}
       });
-      window.Butterfly = {};
-      window.Butterfly.currentUser = new User();
-      window.Butterfly.currentUser.fetch();
       new Router({
         $rootEl: $('#main'),
         $navBar: $('#nav')
@@ -37,14 +34,8 @@ class Butterfly {
       let user1 = new User(data.users[1]);
       users.add(data.users);
 
-
-
-      //Butterfly.currentUser = new User(data);
-      //debugger;
     }
 
-    test () {
-    }
 
 }
 

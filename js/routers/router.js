@@ -1,6 +1,7 @@
 import User from '../models/user';
 import UserShow from '../views/user_show';
 import NavBar from '../views/nav_bar';
+import SyncHelper from '../utils/sync_helper';
 
 
 class Router extends Backbone.Router {
@@ -9,6 +10,7 @@ class Router extends Backbone.Router {
     super();
     this.$rootEl = options.$rootEl;
     this.$navBar = options.$navBar;
+    this.syncHelper = new SyncHelper();
     this.routes = {"": "homePage",
       "profile": "profile",
       "groups":  "groups",
@@ -34,10 +36,28 @@ class Router extends Backbone.Router {
 
 
   users () {
-    this.swapViews($("<div></div>"), 'users');
+    let mod = new User();
+    mod.fetch();
+    let that = this;
+    $.when(that.syncHelper.groups()).done(function (groups) {
+      let view = new UserShow({model: mod, collection: groups});
+      that.swapViews(view, 'users')
+      // that.usersNav(groups);
+    });
   }
 
-  groups () {
+  usersNav (value) {
+    debugger;
+    let view = new UserShow({model: user, collection: value});
+    let mod = new User();
+    mod.fetch();
+    debugger;
+    this.swapViews(view, 'users');
+
+  }
+
+  groups (groups) {
+    let view = new UserShow({model: mod, collection: groups})
     this.swapViews($("<div></div>"), 'groups');
 
   }
