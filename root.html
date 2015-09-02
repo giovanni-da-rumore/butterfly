@@ -108,8 +108,48 @@
 				<button class="form__button" id="groups-button"> ADD/REMOVE GROUPS </button>
 			</section>
 		</section>
-    	</main>
-    </script>
+  </main>
+</script>
+
+
+<script type="text/template" id="users-index-template">
+	<ul id="users-index">
+
+	</ul>
+
+</script>
+
+
+<script type="text/template" id=user-item-template>
+
+	<ul class="user-item">
+		<li class="user-item__checkbox" id="<%=user.get('_id')%>">
+			<div class="checkbox-propre">
+			</div>
+		</li>
+		<li class="user-item__email">
+			<%= user.escape('email')%>
+		</li>
+
+		<li class="user-item__first-name">
+			<%= user.escape('firstName')%>
+		</li>
+
+		<li class="user-item__last-name">
+			<%= user.escape('lastName')%>
+		</li>
+
+		<li class="user-item__groups">
+			<div class="user-item__groups__text">
+
+			</div>
+			<button class="user-item__groups__edit">Edit</button>
+		</li>
+	</ul>
+
+
+
+</script>
 
 <div id="article-template"></div>
 

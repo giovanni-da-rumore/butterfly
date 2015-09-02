@@ -12,7 +12,6 @@ class SyncHelper {
   }
 
   syncData (callback) {
-    console.log('sync called')
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/sync';
     return $.ajax({
           type:"GET",
@@ -23,7 +22,7 @@ class SyncHelper {
           },
           url: url,
           success: callback,
-        }).done(this.getUsers)
+        })
   }
 
   getUsers (data) {

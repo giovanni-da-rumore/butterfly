@@ -1,16 +1,11 @@
-import SyncHelper from '../utils/sync_helper';
-import Groups from '../collections/groups';
-import GroupItem from './group_item';
-
-class UserShow extends Backbone.View {
+class UserItem extends Backbone.View {
 
 
   constructor (options) {
     super();
     this.model = options.model;
-    this.groups = new Groups();
-    options.collection && this.groups.add(options.collection.groups);
-    this.template = _.template($("#user-show-template").html());
+    this.groups = options.groups;
+    this.template = _.template($("#user-item-template").html());
     this.listenTo(this.model, 'sync', this.render);
 
   }
@@ -20,8 +15,7 @@ class UserShow extends Backbone.View {
     this.model.get('groupIds').forEach(function (groupId) {
       let group = this.groupById(groupId);
       if (group) {
-        let groupView = new GroupItem({model: group})
-        this.$el.find('.profile__groups-list').append(groupView.render().$el);
+        this.$el.find('.user-item__groups__text').append(group.escape('name'));
       }
     }.bind(this));
     return this;
@@ -29,7 +23,7 @@ class UserShow extends Backbone.View {
   }
 
   groupById (id) {
-    let targetGroup = null
+    let targetGroup = null;
     this.groups.each(function (group) {
       if (group.get('_id') === id) {
         targetGroup = group;
@@ -45,4 +39,4 @@ class UserShow extends Backbone.View {
 
 }
 
-export default UserShow;
+export default UserItem;

@@ -1,7 +1,8 @@
-import User from '../models/user';
-import UserShow from '../views/user_show';
 import NavBar from '../views/nav_bar';
 import SyncHelper from '../utils/sync_helper';
+import User from '../models/user';
+import UserShow from '../views/user_show';
+import UsersIndex from '../views/users_index';
 
 
 class Router extends Backbone.Router {
@@ -32,18 +33,15 @@ class Router extends Backbone.Router {
 
 
   users () {
-    let mod = new User();
-    mod.fetch();
     let that = this;
-    $.when(that.syncHelper.groups()).done(function (groups) {
-      let view = new UserShow({model: mod, collection: groups});
+    $.when(that.syncHelper.syncData()).done(function (data) {
+      let view = new UsersIndex({collections: data});
       that.swapViews(view, 'users')
     });
   }
 
   groups (groups) {
-    // let view = new UserShow({model: mod, collection: groups})
-    // this.swapViews($("<div></div>"), 'groups');
+
 
   }
 
