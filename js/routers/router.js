@@ -11,7 +11,7 @@ class Router extends Backbone.Router {
     this.$rootEl = options.$rootEl;
     this.$navBar = options.$navBar;
     this.syncHelper = new SyncHelper();
-    this.routes = {"": "homePage",
+    this.routes = {"": "profile",
       "profile": "profile",
       "groups":  "groups",
       "users":   "users"};
@@ -19,19 +19,21 @@ class Router extends Backbone.Router {
 
   }
 
-  homePage () {
-    // this.user = window.Butterfly.currentUser;
-    let user = new User();
-    user.fetch();
-    let view = new UserShow({model: user});
-    this.swapViews(view, "profile");
-  }
+  // homePage () {
+  //   let user = new User();
+  //   user.fetch();
+  //   let view = new UserShow({model: user});
+  //   this.swapViews(view, "profile");
+  // }
 
   profile () {
+    let that = this;
     let user = new User();
     user.fetch();
-    let view = new UserShow({model: user});
-    this.swapViews(view, "profile");
+    $.when(that.syncHelper.groups()).done(function (groups) {
+      let view = new UserShow({model: user, collection: groups});
+      that.swapViews(view, 'users')
+    });
   }
 
 
@@ -42,18 +44,7 @@ class Router extends Backbone.Router {
     $.when(that.syncHelper.groups()).done(function (groups) {
       let view = new UserShow({model: mod, collection: groups});
       that.swapViews(view, 'users')
-      // that.usersNav(groups);
     });
-  }
-
-  usersNav (value) {
-    debugger;
-    let view = new UserShow({model: user, collection: value});
-    let mod = new User();
-    mod.fetch();
-    debugger;
-    this.swapViews(view, 'users');
-
   }
 
   groups (groups) {
