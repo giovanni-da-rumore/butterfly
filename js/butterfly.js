@@ -17,18 +17,12 @@ class Butterfly {
 }
 
 $(() => {
-
-  $('#nav-template-holder').load('/templates/nav_bar.jst.ejs', function () {
-    $('#user-prof-template-holder').load('templates/user_profile.jst.ejs', function () {
-      $('#user-show-template-holder').load('templates/user_show.jst.ejs', function () {
-          $('#user-show-template-holder').load('templates/user_show.jst.ejs', function () {
-            $('#users-index-template-holder').load('templates/users_index.jst.ejs', function () {
-              $('#user-item-template-holder').load('templates/user_item.jst.ejs', function () {
-                  window.Butterfly = new Butterfly();
-              });
-            });
-          });
-        });
-      });
-    });
-  });
+  $.when(
+    $('#nav-template-holder').load('/templates/nav_bar.jst.ejs'),
+    $('#user-prof-template-holder').load('templates/user_profile.jst.ejs'),
+    $('#user-show-template-holder').load('templates/user_show.jst.ejs'),
+    $('#user-show-template-holder').load('templates/user_show.jst.ejs'),
+    $('#users-index-template-holder').load('templates/users_index.jst.ejs'),
+    $('#user-item-template-holder').load('templates/user_item.jst.ejs')
+  ).then(function () { new Butterfly() });
+});

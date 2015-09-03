@@ -33,6 +33,7 @@ gulp.task('browserifyWatch', function(){
 
 gulp.task("watch", function () {
   gulp.watch("js/**/*.js", ["modules"]);
+  gulp.watch('stylesheets/**/*.scss',['styles']);
 
 });
 
@@ -43,11 +44,11 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('public/css'))
 });
 
-gulp.task('watchStyles',function() {
-    gulp.watch('stylesheets/**/*.scss',['styles']);
-
-
-});
+// gulp.task('watchStyles',function() {
+//     gulp.watch('stylesheets/**/*.scss',['styles']);
+//
+//
+// });
 
 // 'use strict;'
 //
