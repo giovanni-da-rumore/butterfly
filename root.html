@@ -5,204 +5,37 @@
 	<head>
 	  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	  <title>Butterfly Challenge</title>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/profile.css"/>
     <link rel="stylesheet" href="css/users_index.css"/>
     <link rel="stylesheet" href="css/user_item.css"/>
-
     <script src="dist/output.js"></script>
 	</head>
 
 	<body>
 
+		<header class="main-header group">
+	    <h3 class="logo">
+	    </h3>
+	  </header>
 
-
-    <header class="main-header group">
-      <h3 class="logo">
-      </h3>
-    </header>
-
-
-		<script type="text/template" id="nav-template">
-			<ul class="navbar group">
-				<li id="navbar-profile"> My Profile </li>
-				<li id="navbar-users"> Users </li>
-				<li id="navbar-groups"> Groups </li>
-			</ul>
-
-		</script>
-
-
+		<div id="nav-template-holder"></div>
+		<div id="user-prof-template-holder"></div>
+		<div id="user-show-template-holder"></div>
+		<div id="users-index-template-holder"></div>
+		<div id="user-item-template-holder"></div>
 
 		<nav id="nav"></nav>
-    <script type="text/template" id=user-show-template>
-    	<main class="user-profile group">
-			<section class="profile__left group">
+		<div id="templates"></div>
 
-				<div class="profile__prof-picture">
-				<img class="profile__pic" src='<%= user.escape("picture")%>'/>
-				<div class="profile__pic-words">
-					<h3 class="profile__pic__header">
-						Your photo
-					</h3>
-					<p>
-						Photo should be at least 300px X 300px
-					</p>
-					<button> Remove current photo</button>
+		<main id="main">
+		</main>
 
-				</div>
-				</div>
-				<form class="profile__form">
-					<h3 class="profile__form-h3"> Basic information</h3>
-					<label class="profile__form-label">
-						First Name*
-						<input type="text" name="user[first_name]" value="<%= user.escape('firstName')%>">
-					</label>
-
-					<label class="profile__form-label">
-						Last Name*
-						<input type="text" name="user[last_name]" value="<%= user.escape('lastName') %>">
-					</label>
-
-					<label class="profile__form-label">
-						Company Title*
-						<input type="text" name="user[title]" value="<%= user.escape('title') %>">
-					</label>
-
-					<label class="profile__form-label">
-						<div class="profile__form__email">
-							Email*
-						</div>
-						<div class="profile__form__email-sub">
-							(= User Name)
-						</div>
-						<input type="text" name="user[email]" value="<%= user.escape('email') %>">
-					</label>
-
-					<button class="form__button"> UPDATE </button>
-
-				</form>
-
-				<form class="profile__form">
-					<h3 class="profile__form-h3"> Change passowrd</h3>
-					<label class="profile__form--label">
-						Type your new password
-						<input type="password" name="user[password]" value="">
-					</label>
-
-					<button class="form__button"> UPDATE </button>
-				</form>
-		</section>
-
-		<section class="profile__right group">
-
-			<section class="profile__groups group">
-				<h3 class="profile__form-h3"> Groups </h3>
-
-				<ul class="profile__groups-list">
-				</ul>
-				<button class="form__button" id="groups-button"> ADD/REMOVE GROUPS </button>
-			</section>
-		</section>
-  </main>
-</script>
-
-
-<script type="text/template" id="users-index-template">
-
-	<header class="users-index-header group">
-		<h3>
-			List of users <div class="users-index__count"> <%=length%>
-		</h3>
-
-		<ul class="users-index__options">
-			<li class="users-index__options__edit">edit</li>
-			<li class="users-index__options__delete">delete</li>
-			<li class="users-index__options__add">add users</li>
-		</ul>
-	</header>
-
-	<ul class="users-colnames group">
-		<li class="check-all">
-			v
-		</li>
-		<li class="users-colnames__email">
-			Email/Username
-		</li>
-		<li class="users-colnames__first-name">
-			First Name
-		</li>
-		<li class="users-colnames__last-name">
-			Last Name
-		</li>
-
-		<li class="users-colnames__groups">
-			Last Name
-		</li>
-
-	</ul>
-
-	<ul class="users-index group">
-
-	</ul>
-
-</script>
-
-
-<script type="text/template" id=user-item-template>
-
-	<ul class="user-item group">
-		<li class="user-item__checkbox" id="<%=user.get('_id')%>">
-			<div class="checkbox-propre">
-			</div>
-		</li>
-		<li class="user-item__email">
-			<%= user.escape('email')%>
-		</li>
-
-		<li class="user-item__first-name">
-			<%= user.escape('firstName')%>
-		</li>
-
-		<li class="user-item__last-name">
-			<%= user.escape('lastName')%>
-		</li>
-
-		<li class="user-item__groups">
-			<div class="user-item__groups__text">
-
-			</div>
-			<button class="user-item__groups__edit">edit</button>
-		</li>
-	</ul>
-
-
-
-</script>
-
-<div id="article-template"></div>
-
-
-
-<main id="main">
-something on the page
-</main>
-
-<script type="text/javascript">
-
-// $(document).ready(function(){
-//
-// 	$("#article-template").load("/templates/user_show.jst.ejs", function () {});
-// });
-
-
-</script>
+		<script type="text/javascript">
+		</script>
 
 
 </body>

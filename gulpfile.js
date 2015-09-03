@@ -24,7 +24,7 @@ gulp.task('modules', function() {
     .transform(babelify)
     .bundle()
     .pipe(source('output.js'))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./public/dist'));
 });
 
 gulp.task('browserifyWatch', function(){
@@ -40,7 +40,7 @@ gulp.task("watch", function () {
 gulp.task('styles', function() {
     gulp.src('stylesheets/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('public/css'))
 });
 
 gulp.task('watchStyles',function() {

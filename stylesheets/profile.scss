@@ -1,12 +1,60 @@
+
+h3  {
+    color: #05B8CC;
+    font-size: 16px;
+  }
+
+.user-profile-header {
+  width: 900px;
+  margin: auto;
+  font-size: 14px;
+  padding-top: 25px;
+
+
+  .profile__prof-picture {
+    float: left;
+    width: 420px;
+    background: #EDEDED;
+
+
+      img {
+        float: left;
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin-right: 20px;
+        border: 1px solid #EDEDED;
+      }
+
+      .profile__pic-words {
+        display: block;
+        float: left;
+
+        padding: 8px;
+        padding-top: 19px;
+      }
+
+      h3 {
+        padding-bottom: 8px;
+      }
+
+      p {
+        color: #A3A3A3;
+      }
+
+      button {
+        font-size: 12px;
+        border-bottom: 1px solid #2ce6ce;
+        color: #2ce6ce;
+        cursor: pointer;
+      }
+    }
+  }
+
 .user-profile {
   width: 900px;
   margin: auto;
   font-size: 14px;
-
-  h3  {
-    color: #05B8CC;
-    font-size: 16px;
-  }
 
   $grey-background: #EDEDED;
 
@@ -14,7 +62,7 @@
     width: 440px;
     float: left;
     color: #A3A3A3;
-    margin-top: 30px;
+    margin-top: 10px;
   }
 
   .profile__prof-picture {
@@ -113,6 +161,7 @@
     width: 420px;
     float: left;
     margin-top: 161px;
+    margin-top: 40px;
     margin-left: 25px;
 
     .profile__groups {
