@@ -126,9 +126,29 @@
 			<li class="users-index__options__delete">delete</li>
 			<li class="users-index__options__add">add users</li>
 		</ul>
-
 	</header>
-	<ul id="users-index">
+
+	<ul class="users-colnames group">
+		<li class="check-all">
+			v
+		</li>
+		<li class="users-colnames__email">
+			Email/Username
+		</li>
+		<li class="users-colnames__first-name">
+			First Name
+		</li>
+		<li class="users-colnames__last-name">
+			Last Name
+		</li>
+
+		<li class="users-colnames__groups">
+			Last Name
+		</li>
+
+	</ul>
+
+	<ul class="users-index group">
 
 	</ul>
 
@@ -137,7 +157,7 @@
 
 <script type="text/template" id=user-item-template>
 
-	<ul class="user-item">
+	<ul class="user-item group">
 		<li class="user-item__checkbox" id="<%=user.get('_id')%>">
 			<div class="checkbox-propre">
 			</div>
@@ -158,7 +178,7 @@
 			<div class="user-item__groups__text">
 
 			</div>
-			<button class="user-item__groups__edit">Edit</button>
+			<button class="user-item__groups__edit">edit</button>
 		</li>
 	</ul>
 

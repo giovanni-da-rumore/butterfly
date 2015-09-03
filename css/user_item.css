@@ -3,3 +3,55 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
+
+.user-item {
+  width: 930px;
+  background: #EDEDED;
+  border-bottom: 1px solid #fff; }
+  .user-item .user-item__checkbox {
+    cursor: pointer; }
+  .user-item .checkbox-propre {
+    height: 10px;
+    width: 10px;
+    background: #fff;
+    margin: 4px 2px;
+    margin-left: -1px;
+    border-radius: 3px; }
+  .user-item .checkbox-propre.active {
+    background: #C4C4C4; }
+  .user-item .checkbox-propre:hover {
+    background: #C4C4C4;
+    height: 6px;
+    width: 6px;
+    border: 2px solid #fff; }
+  .user-item li {
+    border-right: 1px solid #fff;
+    padding: 5px;
+    padding-left: 8px;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .user-item li:last-child {
+    border-right: none; }
+  .user-item .user-item__email {
+    color: #05B8CC;
+    width: 290px; }
+  .user-item .user-item__first-name {
+    width: 170px; }
+  .user-item .user-item__last-name {
+    width: 160px; }
+  .user-item .user-item__groups {
+    width: 212px; }
+  .user-item .user-item__groups__edit {
+    float: left;
+    margin-left: 8px;
+    color: #05B8CC;
+    cursor: pointer; }
+  .user-item .user-item__groups__text {
+    float: left;
+    width: 180px;
+    min-height: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }

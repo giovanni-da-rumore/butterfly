@@ -12,10 +12,18 @@ class UserItem extends Backbone.View {
 
   render () {
     this.$el.html(this.template({user: this.model}));
+    let count = 0
     this.model.get('groupIds').forEach(function (groupId) {
       let group = this.groupById(groupId);
       if (group) {
-        this.$el.find('.user-item__groups__text').append(group.escape('name'));
+        let string = ""
+        if (count === 0) {
+          string = " " + group.escape('name');
+        } else {
+          string = ", " + group.escape('name')
+        }
+        count += 1
+        this.$el.find('.user-item__groups__text').append(string);
       }
     }.bind(this));
     return this;

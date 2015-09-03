@@ -20,7 +20,7 @@ class UserIndex extends Backbone.View {
     this.$el.html(this.template());
     this.collection.forEach(function (user) {
       let userView = new UserItem({model: user, groups: this.groups});
-      this.$el.find("#users-index").append(userView.render().$el);
+      this.$el.find(".users-index").append(userView.render().$el);
     }.bind(this));
     return this;
   }
