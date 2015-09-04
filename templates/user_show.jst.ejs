@@ -1,0 +1,57 @@
+<script type="text/template" id="user-show-template">
+  <main class="user-profile group">
+  <section class="profile__left group">
+    <form class="profile__form">
+      <h3 class="profile__form-h3"> Basic information</h3>
+      <label class="profile__form-label">
+        First Name*
+        <input type="text" name="user[first_name]" value="<%= user.escape('firstName')%>">
+      </label>
+
+      <label class="profile__form-label">
+        Last Name*
+        <input type="text" name="user[last_name]" value="<%= user.escape('lastName') %>">
+      </label>
+
+      <label class="profile__form-label">
+        Company Title*
+        <input type="text" name="user[title]" value="<%= user.escape('title') %>">
+      </label>
+
+      <label class="profile__form-label">
+        <div class="profile__form__email">
+          Email*
+        </div>
+        <div class="profile__form__email-sub">
+          (= User Name)
+        </div>
+        <input type="text" name="user[email]" value="<%= user.escape('email') %>">
+      </label>
+
+      <button class="form__button"> UPDATE </button>
+
+    </form>
+
+    <form class="profile__form">
+      <h3 class="profile__form-h3"> Change passowrd</h3>
+      <label class="profile__form--label">
+        Type your new password
+        <input type="password" name="user[password]" value="">
+      </label>
+
+      <button class="form__button"> UPDATE </button>
+    </form>
+</section>
+
+<section class="profile__right group">
+
+  <section class="profile__groups group">
+    <h3 class="profile__form-h3"> Groups </h3>
+
+    <ul class="profile__groups-list">
+    </ul>
+    <button class="form__button" id="groups-button"> ADD/REMOVE GROUPS </button>
+  </section>
+</section>
+</main>
+</script>
