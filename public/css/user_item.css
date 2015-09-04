@@ -18,8 +18,7 @@
     margin-left: -1px;
     border-radius: 3px; }
   .user-item .checkbox-propre.active {
-    background: #C4C4C4; }
-  .user-item .checkbox-propre:hover {
+    background: #C4C4C4;
     background: #C4C4C4;
     height: 6px;
     width: 6px;

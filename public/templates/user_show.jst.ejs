@@ -31,14 +31,16 @@
   			<button class="form__button"> UPDATE </button>
   		</form>
 
-			<form class="profile__form">
-				<h3 class="profile__form-h3"> Change passowrd</h3>
-				<label class="profile__form--label">
-					Type your new password
-					<input type="password" name="user[password]" value="">
-				</label>
-				<button class="form__button"> UPDATE </button>
-			</form>
+			<% if (profile) { %>
+				<form class="profile__form">
+		      <h3 class="profile__form-h3"> Change passowrd</h3>
+		      <label class="profile__form--label">
+		        Type your new password
+		        <input type="password" name="user[password]" value="">
+		      </label>
+		      <button class="form__button"> UPDATE </button>
+		    </form>
+			<% } %>
 		</section>
 
 		<section class="profile__right group">

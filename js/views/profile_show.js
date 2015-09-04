@@ -18,7 +18,7 @@ class ProfileShow extends Backbone.View {
 
   render () {
     this.$el.html(this.template({user: this.model}));
-    let subView = new UserShow({model: this.model, collections: this.collections});
+    let subView = new UserShow({model: this.model, collections: this.collections, profile: true});
     this.$el.find('.profile-user-show').append(subView.render().$el);
     // if (!this.model.get('groupIds')) {
     //   return this;

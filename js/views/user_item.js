@@ -6,8 +6,12 @@ class UserItem extends Backbone.View {
     this.model = options.model;
     this.groups = options.groups;
     this.template = _.template($("#user-item-template").html());
+    this.events = {
+      "click .user-item__checkbox": "selectItem",
+      "click .user-item__groups__edit": "editUser",
+     }
     this.listenTo(this.model, 'sync', this.render);
-
+    Backbone.View.apply(this);
   }
 
   render () {
@@ -27,7 +31,6 @@ class UserItem extends Backbone.View {
       }
     }.bind(this));
     return this;
-
   }
 
   groupById (id) {
@@ -38,8 +41,17 @@ class UserItem extends Backbone.View {
         return group;
       }
     })
-    return targetGroup;
 
+    return targetGroup;
+  }
+
+  selectItem (event) {
+    let $box = $(event.currentTarget);
+    $box.find('div').toggleClass('active');
+  }
+
+  editUser (event) {
+    Backbone.history.navigate('#/users/' + this.model.get('_id'), {trigger: true});
   }
 
 

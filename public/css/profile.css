@@ -37,7 +37,7 @@ h3 {
   width: 900px;
   margin: auto;
   font-size: 14px; }
-  .user-profile .profile__left {
+  .user-profile .profile__left, .user-profile .profile__password {
     width: 440px;
     float: left;
     color: #A3A3A3;

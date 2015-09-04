@@ -68,7 +68,7 @@ h3  {
   .profile__prof-picture {
     float: left;
     width: 420px;
-    background: #EDEDED;
+    background: $grey-background;
 
 
       img {
@@ -152,9 +152,6 @@ h3  {
         border-radius: 4px;
         font-size: 14px;
       }
-
-
-
   }
 
   .profile__right {
@@ -200,78 +197,12 @@ h3  {
         margin-right: 10px;
         line-height: 1;
         cursor: pointer;
-
       }
-
     }
   }
 }
 
+.profile__password {
+  @extend .user__profile .profile__left;
 
-// st typetext/template" id=user-show-template>
-//   <main class="user-profile">
-//   <section class="profile__left">
-//
-//     <div class="profile__prof-picture">
-//     <img class="profile__pic" src='<%= user.escape("picture")%>'/>
-// <div class="profile__pic-words">
-//   <h3 class="profile__pic__header">
-//     Your photo
-//   </h3>
-//   <p>
-//     Photo should be at least 300px X 300px
-//   </p>
-//   <button> Remove current photo</button>
-//
-// </div>
-
-//     </div>
-//     <form class="profile__form-form">
-//       <h3 profile__form-> Basic Information</h3>
-//       <label class="profile__form-label">
-//         First Name *
-//         <input type="text" name="user[first_name]" value="<%= user.escape('firstName')%>">
-//       </label>
-//
-//       <label class="profile__form-label">
-//         Last Name *
-//         <input type="text" name="user[last_name]" value="<%= user.escape('lastName') %>">
-//       </label>
-//
-//       <label class="profile__form-label">
-//         Company Title *
-//         <input type="text" name="user[title]" value="<%= user.escape('title') %>">
-//       </label>
-//
-//       <label class="profile__form-label">
-//         Email * (= User Name)
-//         <input type="text" name="user[email]" value="<%= user.escape('email') %>">
-//       </label>
-//
-//       <button class="form__button"> Update </button>
-//
-//     </form>
-//
-//     <form class="profile__form-password">
-//       <h3> Change passowrd</h3>
-//       <label class="profile__form--label">
-//         Type your new password
-//         <input type="password" name="user[password]" value="">
-//       </label>
-//
-//       <button class="form__button"> Update </button>
-//     </form>
-// </section>
-//
-// <section class="profile__right">
-//
-//   <section class="profile__groups">
-//     <h3> Groups </h3>
-//
-//     <ul class="profile__groups-list">
-//     </ul>
-//     <button class="groups__button"> Update </button>
-//   </section>
-// </section>
-//   </main>
-// </script>
+}

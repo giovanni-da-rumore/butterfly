@@ -9,6 +9,7 @@ class UserShow extends Backbone.View {
     super();
     this.model = options.model;
     this.groups = new Groups();
+    this.profile = options.profile;
     options.collections && this.groups.add(options.collections.groups);
     this.template = _.template($("#user-show-template").html());
     this.listenTo(this.model, 'sync', this.render);
@@ -16,7 +17,7 @@ class UserShow extends Backbone.View {
   }
 
   render () {
-    this.$el.html(this.template({user: this.model}));
+    this.$el.html(this.template({user: this.model, profile: this.profile}));
     if (!this.model.get('groupIds')) {
       return this;
     }

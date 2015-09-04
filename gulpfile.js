@@ -10,7 +10,7 @@ var sass = require('gulp-sass');
 
 gulp.task('modules', function() {
     browserify({
-    entries: 'js/butterfly.js',  // I assume entries is like src([]) in normal gulp
+    entries: 'js/butterfly.js',
     debug: true
     })
     .on('error', gutil.log.bind(gutil, 'Browserify Error'))
