@@ -17,7 +17,7 @@ class UserIndex extends Backbone.View {
   }
 
   render () {
-    this.$el.html(this.template());
+    this.$el.html(this.template({count: this.collection.length}));
     this.collection.forEach(function (user) {
       let userView = new UserItem({model: user, groups: this.groups});
       this.$el.find(".users-index").append(userView.render().$el);
@@ -25,17 +25,17 @@ class UserIndex extends Backbone.View {
     return this;
   }
 
-  groupById (id) {
-    let targetGroup = null
-    this.groups.each(function (group) {
-      if (group.get('_id') === id) {
-        targetGroup = group;
-        return group;
-      }
-    })
-    return targetGroup;
-
-  }
+  // groupById (id) {
+  //   let targetGroup = null
+  //   this.groups.each(function (group) {
+  //     if (group.get('_id') === id) {
+  //       targetGroup = group;
+  //       return group;
+  //     }
+  //   })
+  //   return targetGroup;
+  //
+  // }
 
 
 

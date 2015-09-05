@@ -41,7 +41,6 @@ class UserItem extends Backbone.View {
         return group;
       }
     })
-
     return targetGroup;
   }
 
