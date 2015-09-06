@@ -1,42 +1,37 @@
 import Groups from '../collections/groups';
 import GroupItem from './group_item';
-import UserShow from "./user_show";
 
-class ProfileShow extends Backbone.View {
+class UserNew extends Backbone.View {
 
 
   constructor (options) {
     super();
     this.model = options.model;
-    this.collections = options.collections;
     this.groups = new Groups();
     options.collections && this.groups.add(options.collections.groups);
-    this.template = _.template($("#user-profile-template").html());
-    this.listenTo(this.model, 'sync', this.render);
+    this.template = _.template($("#user-show-template").html());
     this.events = {
-      'submit #password-form': "updatePassowrd",
+      "submit form": "create",
     }
     Backbone.View.apply(this);
 
   }
 
   render () {
-    this.$el.html(this.template({user: this.model}));
-    let subView = new UserShow({model: this.model, collections: this.collections, profile: true});
-    this.$el.find('.profile-user-show').append(subView.render().$el);
+    this.$el.html(this.template({user: this.model, profile: false}));
     return this;
 
   }
 
-  updatePassowrd (event) {
+
+  create (event) {
     event.preventDefault();
     let that = this;
     let data = $(event.currentTarget).serializeJSON().user;
     let dataString = JSON.stringify(data);
-    debugger;
-    let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/user';
+    let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users';
     $.ajax({
-        type:"PUT",
+        type:"POST",
         dataType: 'json',
         contentType: "application/json",
         beforeSend: function (request)
@@ -52,12 +47,15 @@ class ProfileShow extends Backbone.View {
       });
   }
 
-  refresh () {
-    alert("Succès!");
+  refresh (response) {
+    this.model.set(response.data);
+    debugger;
+    alert("Success!")
     this.render();
 
   }
 
 }
 
-export default ProfileShow;
+
+export default UserNew;

@@ -2,6 +2,7 @@ import NavBar from '../views/nav_bar';
 import SyncHelper from '../utils/sync_helper';
 import User from '../models/user';
 import UserShow from '../views/user_show';
+import UserNew from '../views/user_new';
 import ProfileShow from '../views/profile_show';
 import UsersIndex from '../views/users_index';
 
@@ -15,13 +16,13 @@ class Router extends Backbone.Router {
     this.syncHelper = new SyncHelper();
     this.routes = {"": "profile",
       "profile": "profile",
+      "users/new": "userNew",
       "users/:id": "userShow",
+      "users":   "users",
       "groups":  "groups",
-      "users":   "users"};
+    };
     this._bindRoutes()
-
   }
-
 
   profile () {
     let that = this;
@@ -32,7 +33,6 @@ class Router extends Backbone.Router {
       that.swapViews(view, 'profile')
     });
   }
-
 
   users () {
     let that = this;
@@ -49,7 +49,12 @@ class Router extends Backbone.Router {
       let view = new UserShow({model: user, collections: data});
       that.swapViews(view, 'users')
     });
+  }
 
+  userNew () {
+    let user = new User();
+    let view = new UserNew({model: user});
+    this.swapViews(view, 'users');
   }
 
   groups (groups) {

@@ -17,12 +17,31 @@ class Butterfly {
 }
 
 $(() => {
-  $.when(
-    $('#nav-template-holder').load('/templates/nav_bar.jst.ejs'),
-    $('#user-prof-template-holder').load('templates/user_profile.jst.ejs'),
-    $('#user-show-template-holder').load('templates/user_show.jst.ejs'),
-    $('#user-show-template-holder').load('templates/user_show.jst.ejs'),
-    $('#users-index-template-holder').load('templates/users_index.jst.ejs'),
-    $('#user-item-template-holder').load('templates/user_item.jst.ejs')
-  ).then(function () { new Butterfly() });
+
+  Array.prototype.remove = function(from, to) {
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+  };
+
+  function createLoadPromise(fileName, id) {
+    return $.Deferred(function(promise) {
+      $(id).load(fileName, function () {
+        promise.resolve();
+      });
+    }).promise();
+  }
+
+  var promises = [ ];
+
+  promises.push( createLoadPromise('templates/user_show.jst.ejs', '#user-show-template-holder') );
+  promises.push( createLoadPromise('templates/user_profile.jst.ejs', '#user-prof-template-holder'));
+  promises.push( createLoadPromise('templates/users_index.jst.ejs', '#users-index-template-holder'));
+  promises.push( createLoadPromise('templates/user_item.jst.ejs', '#user-item-template-holder'));
+  promises.push( createLoadPromise('templates/nav_bar.jst.ejs', '#nav-template-holder'));
+
+  $.when.apply( null, promises ).done( function() {
+      new Butterfly();
+  });
+
 });

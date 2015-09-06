@@ -9,15 +9,12 @@ class GroupItem extends Backbone.View {
   }
 
   render () {
-    let string = '<li class="profile__group-item id="' + this.model.get('id');
+    let string = '<li class="profile__group-item" id="' + this.model.get('_id');
     string += '"> <div class="del-x">x</div> ' + this.model.escape('name') + '</li>'
     this.$el.html(string);
     return this;
 
   }
-
-
-
 
 }
 

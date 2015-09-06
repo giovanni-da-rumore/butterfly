@@ -14,7 +14,9 @@ class UserShow extends Backbone.View {
     this.template = _.template($("#user-show-template").html());
     this.listenTo(this.model, 'sync', this.render);
     this.events = {
-      "submit form": "updateInfo",
+      'submit #normal-form': 'updateInfo',
+      'click .del-x': 'deleteGroup',
+      'click #groups-buttom': "updateGroups"
     }
     Backbone.View.apply(this);
 
@@ -52,6 +54,7 @@ class UserShow extends Backbone.View {
     event.preventDefault();
     let that = this;
     let data = $(event.currentTarget).serializeJSON().user;
+    data.groupIds = this.model.get('groupIds');
     let dataString = JSON.stringify(data);
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users/';
     url += this.model.get('_id');
@@ -73,11 +76,29 @@ class UserShow extends Backbone.View {
   }
 
   refresh (response) {
+    alert("Succès!")
     this.model.set(response.data);
-    alert("Success!")
     this.render();
 
   }
+
+  deleteGroup (event) {
+    let $group = $(event.currentTarget).parent();
+    let id = $group.attr('id');
+    let ids = this.model.get('groupIds');
+    for (var i = 0; i < ids.length; i++) {
+      if (ids[i] == id) {
+          this.model.attributes.groupIds.remove(i);
+          break;
+      }
+    }
+    $group.remove();
+
+
+  }
+
+
+
 
 }
 

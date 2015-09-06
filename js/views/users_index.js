@@ -13,7 +13,10 @@ class UserIndex extends Backbone.View {
     options.collections && this.collection.add(options.collections.users);
     options.collections && this.groups.add(options.collections.groups);
     this.template = _.template($("#users-index-template").html());
-
+    this.events = {
+      'click .users-index__options__add': 'addUser',
+    }
+    Backbone.View.apply(this);
   }
 
   render () {
@@ -25,20 +28,12 @@ class UserIndex extends Backbone.View {
     return this;
   }
 
-  // groupById (id) {
-  //   let targetGroup = null
-  //   this.groups.each(function (group) {
-  //     if (group.get('_id') === id) {
-  //       targetGroup = group;
-  //       return group;
-  //     }
-  //   })
-  //   return targetGroup;
-  //
-  // }
+  addUser () {
+    Backbone.history.navigate('#/users/new', {trigger: true})
 
 
 
+  }
 
 }
 
