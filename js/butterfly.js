@@ -39,6 +39,7 @@ $(() => {
   promises.push( createLoadPromise('templates/users_index.jst.ejs', '#users-index-template-holder'));
   promises.push( createLoadPromise('templates/user_item.jst.ejs', '#user-item-template-holder'));
   promises.push( createLoadPromise('templates/nav_bar.jst.ejs', '#nav-template-holder'));
+  promises.push( createLoadPromise('templates/groups_modal.jst.ejs', '#groups-modal-template-holder'));
 
   $.when.apply( null, promises ).done( function() {
       new Butterfly();

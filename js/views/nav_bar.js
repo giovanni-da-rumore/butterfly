@@ -1,20 +1,13 @@
 class NavBar extends Backbone.View {
 
-
   constructor (options) {
     super();
     this.page = options.page;
     this.template = _.template($("#nav-template").html());
-
     this.events = {
-            "click ul": "changePage",
-        };
+      "click ul": "changePage",
+    };
   }
-
-  initialize () {
-    // this.clickEvents();
-  }
-
 
   render () {
     var id = "#navbar-" + this.page;
@@ -35,9 +28,6 @@ class NavBar extends Backbone.View {
   clickEvents () {
     this.$el.on('click', 'li', this.changePage);
   }
-
-
-
 
 }
 

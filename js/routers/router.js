@@ -4,6 +4,7 @@ import User from '../models/user';
 import UserShow from '../views/user_show';
 import UserNew from '../views/user_new';
 import ProfileShow from '../views/profile_show';
+import GroupsModal from '../views/groups_modal';
 import UsersIndex from '../views/users_index';
 
 
@@ -30,7 +31,9 @@ class Router extends Backbone.Router {
     user.fetch();
     $.when(this.syncHelper.groups()).done(function (data) {
       let view = new ProfileShow({model: user, collections: data});
-      that.swapViews(view, 'profile')
+      that.swapViews(view, 'profile');
+      let groupsView = new GroupsModal({collection: data.groups});
+      $('.groups-modal').html(groupsView.render().$el);
     });
   }
 
@@ -38,7 +41,9 @@ class Router extends Backbone.Router {
     let that = this;
     $.when(this.syncHelper.syncData()).done(function (data) {
       let view = new UsersIndex({collections: data});
-      that.swapViews(view, 'users')
+      that.swapViews(view, 'users');
+      let groupsView = new GroupsModal({collection: data.groups});
+      that.$rootEl.find('.groups-modal').html(groupsView.render().$el)
     });
   }
 

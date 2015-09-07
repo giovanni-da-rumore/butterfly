@@ -16,7 +16,7 @@ class UserShow extends Backbone.View {
     this.events = {
       'submit #normal-form': 'updateInfo',
       'click .del-x': 'deleteGroup',
-      'click #groups-buttom': "updateGroups"
+      'click #groups-button': "addGroups"
     }
     Backbone.View.apply(this);
 
@@ -94,7 +94,11 @@ class UserShow extends Backbone.View {
     }
     $group.remove();
 
+  }
 
+  addGroups () {
+    $('.blur-wrapper').addClass('active');
+    $('.blur-wrapper-sub').addClass('active');
   }
 
 

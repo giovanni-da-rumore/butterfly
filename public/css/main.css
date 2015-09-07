@@ -25,7 +25,16 @@ body {
   font-size: 14px;
   color: #000;
   background: #F7F7F7;
-  line-height: 1.3em; }
+  line-height: 1.3em;
+  height: 100vh; }
+
+.blur-wrapper.active {
+  background: #2ce6ce;
+  opacity: 0.9;
+  height: 100vh; }
+
+.blur-wrapper-sub.active {
+  opacity: 0.2; }
 
 .main-header {
   background-color: #2ce6ce;

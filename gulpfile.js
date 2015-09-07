@@ -20,9 +20,6 @@ gulp.task('modules', function() {
     .pipe(gulp.dest('./public/dist'));
 });
 
-gulp.task('browserifyWatch', function(){
-  browserifyShare();
-});
 
 gulp.task("watch", function () {
   gulp.watch("js/**/*.js", ["modules"]);

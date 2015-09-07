@@ -1,10 +1,20 @@
-.truncate {
-  width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.checkbox-propre {
+  height: 10px;
+  width: 10px;
+  background: #fff;
+  margin: 4px 2px;
+  margin-left: -1px;
+  border-radius: 3px;
+
 }
 
+.checkbox-propre.active {
+  background: #C4C4C4;
+  background: #C4C4C4;
+  height: 6px;
+  width: 6px;
+  border: 2px solid #fff;
+}
 
 
 .user-item {
@@ -18,7 +28,6 @@
   }
 
   .checkbox-propre {
-    // margin: 5px;
     height: 10px;
     width: 10px;
     background: #fff;
