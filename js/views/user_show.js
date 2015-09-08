@@ -1,6 +1,7 @@
 import SyncHelper from '../utils/sync_helper';
 import Groups from '../collections/groups';
 import GroupItem from './group_item';
+import GroupsModal from './groups_modal';
 
 class UserShow extends Backbone.View {
 
@@ -20,7 +21,6 @@ class UserShow extends Backbone.View {
       'click #groups-button': "groupsModal",
     }
     Backbone.View.apply(this);
-
   }
 
   render () {
@@ -28,6 +28,8 @@ class UserShow extends Backbone.View {
     if (!this.model.get('groupIds')) {
       return this;
     }
+    debugger;
+
     this.model.get('groupIds').forEach(function (groupId) {
       let group = this.groupById(groupId);
       if (group) {
@@ -36,7 +38,6 @@ class UserShow extends Backbone.View {
       }
     }.bind(this));
     return this;
-
   }
 
   groupById (id) {
@@ -48,7 +49,6 @@ class UserShow extends Backbone.View {
       }
     })
     return targetGroup;
-
   }
 
   updateInfo (event) {
@@ -97,7 +97,6 @@ class UserShow extends Backbone.View {
       }
     }
     $group.remove();
-
   }
 
   groupsModal () {
@@ -108,7 +107,6 @@ class UserShow extends Backbone.View {
     this.toggleBlur();
     $('.user-groups-button').on('click', this.addGroups.bind(this));
   }
-
 
   addGroups (event) {
     let $groups = $(event.currentTarget).parent().find('li.active');
@@ -127,13 +125,8 @@ class UserShow extends Backbone.View {
     $('.blur-wrapper').toggleClass('active');
     $('.blur-wrapper-sub').toggleClass('active');
     $('.user-groups-modal').toggleClass('active');
-    
   }
 
-
-
-
 }
-
 
 export default UserShow;

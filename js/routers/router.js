@@ -42,6 +42,8 @@ class Router extends Backbone.Router {
     $.when(this.syncHelper.syncData()).done(function (data) {
       let view = new UsersIndex({collections: data});
       that.swapViews(view, 'users');
+      let groupsView = new GroupsModal({collection: data.groups});
+      $('.groups-modal').html(groupsView.render().$el);
     });
   }
 
