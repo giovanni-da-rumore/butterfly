@@ -36,7 +36,9 @@ class UserItem extends Backbone.View {
   groupById (id) {
     let targetGroup = null;
     this.groups.each(function (group) {
-      if (group.get('_id') === id) {
+      if (group.get('deletedAt')) {
+        return;
+      } else if (group.get('_id') === id) {
         targetGroup = group;
         return group;
       }

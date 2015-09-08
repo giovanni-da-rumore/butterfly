@@ -41,7 +41,6 @@ class UserIndex extends Backbone.View {
       let id = user.parentElement.id
       this.deleteUser(id);
       this.$el.find('ul#' + id).remove();
-      $(user.parentElement).remove();
     }.bind(this));
   }
 

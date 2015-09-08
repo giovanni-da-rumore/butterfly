@@ -49,6 +49,9 @@ class UserShow extends Backbone.View {
   groupById (id) {
     let targetGroup = null
     this.groups.each(function (group) {
+      if (group.get('deletedAt')) {
+        return;
+      }
       if (group.get('_id') === id) {
         targetGroup = group;
         return group;

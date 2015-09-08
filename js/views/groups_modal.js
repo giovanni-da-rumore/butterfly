@@ -12,12 +12,14 @@ class GroupsModal extends Backbone.View {
       "click .checkbox-propre": "selectGroup",
     }
     Backbone.View.apply(this);
-
   }
 
   render () {
     this.$el.html(this.template());
     this.collection.each(function (group) {
+      if (group.get('deletedAt')) {
+        return;
+      }
       let string = '<li class="profile__group-item" id="' + group.get('_id');
       string += '"> <div class="checkbox-propre"></div> ' + group.escape('name') + '</li>'
       this.$el.find('ul').append(string);
