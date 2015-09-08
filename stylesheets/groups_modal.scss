@@ -1,14 +1,19 @@
+
+$turquoise: #2ce6ce;
+
+
 .user-groups-modal {
 
   position: absolute;
-  width: 400px;
+  width: 435px;
   background: #fff;
-  margin-top: 200px;
+  top: -700px;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   z-index: 10000;
+  transition: top 0.3s;
 
   .checkbox-propre {
     height: 12px;
@@ -17,10 +22,19 @@
     cursor: pointer;
   }
 
+  .checkbox-propre.active {
+    background: #C4C4C4;
+    background: #C4C4C4;
+    height: 8px;
+    width: 8px;
+    border: 2px solid #fff;
+
+  }
+
   h1 {
     background: #00688B;
     display: block;
-    width: 400px;
+    width: 435px;
     padding: 10px 0px;
     margin-bottom: 10px;
     text-align: center;
@@ -29,7 +43,7 @@
   }
 
   ul {
-    width: 270px;
+    width: 325px;
     margin: auto;
   }
 
@@ -45,6 +59,12 @@
     border-radius: 4px;
   }
 
+  li.active {
+    background: $turquoise;
+    
+  }
+
+
   div {
     float: left;
     margin-right: 8px;
@@ -58,11 +78,13 @@
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
-    margin-left: 140px;
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin-left: 170px;
+    margin-top: 18px;
+    margin-bottom: 15px;
   }
 
+}
 
-
+.user-groups-modal.active {
+  top: 200px;
 }

@@ -12,11 +12,12 @@ class UserShow extends Backbone.View {
     this.profile = options.profile;
     options.collections && this.groups.add(options.collections.groups);
     this.template = _.template($("#user-show-template").html());
+    $('.user-groups-button').on('click', this.addGroups.bind(this));
     this.listenTo(this.model, 'sync', this.render);
     this.events = {
       'submit #normal-form': 'updateInfo',
       'click .del-x': 'deleteGroup',
-      'click #groups-button': "addGroups"
+      'click #groups-button': "groupsModal",
     }
     Backbone.View.apply(this);
 
@@ -52,6 +53,9 @@ class UserShow extends Backbone.View {
 
   updateInfo (event) {
     event.preventDefault();
+    if (this.inModal) {
+      return;
+    }
     let that = this;
     let data = $(event.currentTarget).serializeJSON().user;
     data.groupIds = this.model.get('groupIds');
@@ -96,9 +100,34 @@ class UserShow extends Backbone.View {
 
   }
 
-  addGroups () {
-    $('.blur-wrapper').addClass('active');
-    $('.blur-wrapper-sub').addClass('active');
+  groupsModal () {
+    if (this.inModal) {
+      return;
+    }
+    this.inModal = true;
+    this.toggleBlur();
+    $('.user-groups-button').on('click', this.addGroups.bind(this));
+  }
+
+
+  addGroups (event) {
+    let $groups = $(event.currentTarget).parent().find('li.active');
+    $groups.each(function (index, group) {
+      if (this.model.attributes.groupIds.indexOf(group.id) < 0) {
+        this.model.attributes.groupIds.push(group.id);
+      }
+    }.bind(this));
+    this.toggleBlur();
+    this.inModal = false;
+    $('.user-groups-button').off('click');
+    this.render();
+  }
+
+  toggleBlur () {
+    $('.blur-wrapper').toggleClass('active');
+    $('.blur-wrapper-sub').toggleClass('active');
+    $('.user-groups-modal').toggleClass('active');
+    
   }
 
 

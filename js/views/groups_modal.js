@@ -8,6 +8,10 @@ class GroupsModal extends Backbone.View {
     this.collection = new Groups();
     options.collection && this.collection.add(options.collection);
     this.template = _.template($("#groups-modal-template").html());
+    this.events = {
+      "click .checkbox-propre": "selectGroup",
+    }
+    Backbone.View.apply(this);
 
   }
 
@@ -19,6 +23,11 @@ class GroupsModal extends Backbone.View {
       this.$el.find('ul').append(string);
     }.bind(this));
     return this;
+  }
+
+  selectGroup (event) {
+    $(event.currentTarget).toggleClass('active');
+    $(event.currentTarget).parent().toggleClass('active');
   }
 
 }

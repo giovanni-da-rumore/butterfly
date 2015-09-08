@@ -17,9 +17,9 @@ class Router extends Backbone.Router {
     this.syncHelper = new SyncHelper();
     this.routes = {"": "profile",
       "profile": "profile",
+      "users":   "users",
       "users/new": "userNew",
       "users/:id": "userShow",
-      "users":   "users",
       "groups":  "groups",
     };
     this._bindRoutes()
@@ -42,8 +42,6 @@ class Router extends Backbone.Router {
     $.when(this.syncHelper.syncData()).done(function (data) {
       let view = new UsersIndex({collections: data});
       that.swapViews(view, 'users');
-      let groupsView = new GroupsModal({collection: data.groups});
-      that.$rootEl.find('.groups-modal').html(groupsView.render().$el)
     });
   }
 
@@ -52,6 +50,8 @@ class Router extends Backbone.Router {
     $.when(this.syncHelper.syncData()).done(function (data) {
       let user = new User(that.getUser(id, data));
       let view = new UserShow({model: user, collections: data});
+      let groupsView = new GroupsModal({collection: data.groups});
+      $('.groups-modal').html(groupsView.render().$el)
       that.swapViews(view, 'users')
     });
   }
@@ -59,6 +59,11 @@ class Router extends Backbone.Router {
   userNew () {
     let user = new User();
     let view = new UserNew({model: user});
+    $.when(this.syncHelper.syncData()).done(function (data) {
+      let groupsView = new GroupsModal({collection: data.groups});
+      $('.groups-modal').html(groupsView.render().$el);
+    });
+
     this.swapViews(view, 'users');
   }
 

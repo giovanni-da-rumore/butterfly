@@ -1,29 +1,36 @@
 .user-groups-modal {
   position: absolute;
-  width: 400px;
+  width: 435px;
   background: #fff;
-  margin-top: 200px;
+  top: -700px;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  z-index: 10000; }
+  z-index: 10000;
+  transition: top 0.3s; }
   .user-groups-modal .checkbox-propre {
     height: 12px;
     width: 12px;
     margin-top: 3px;
     cursor: pointer; }
+  .user-groups-modal .checkbox-propre.active {
+    background: #C4C4C4;
+    background: #C4C4C4;
+    height: 8px;
+    width: 8px;
+    border: 2px solid #fff; }
   .user-groups-modal h1 {
     background: #00688B;
     display: block;
-    width: 400px;
+    width: 435px;
     padding: 10px 0px;
     margin-bottom: 10px;
     text-align: center;
     color: #fff;
     font-size: 16px; }
   .user-groups-modal ul {
-    width: 270px;
+    width: 325px;
     margin: auto; }
   .user-groups-modal li {
     background: #DCDCDC;
@@ -35,6 +42,8 @@
     margin: 5px 15px;
     margin-left: 0px;
     border-radius: 4px; }
+  .user-groups-modal li.active {
+    background: #2ce6ce; }
   .user-groups-modal div {
     float: left;
     margin-right: 8px;
@@ -46,6 +55,9 @@
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
-    margin-left: 140px;
-    margin-top: 15px;
-    margin-bottom: 10px; }
+    margin-left: 170px;
+    margin-top: 18px;
+    margin-bottom: 15px; }
+
+.user-groups-modal.active {
+  top: 200px; }
