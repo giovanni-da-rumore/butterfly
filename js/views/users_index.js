@@ -12,6 +12,7 @@ class UserIndex extends Backbone.View {
     options.collections && this.collection.add(options.collections.users);
     options.collections && this.groups.add(options.collections.groups);
     this.template = _.template($("#users-index-template").html());
+    this.count = this.userCount();
     this.events = {
       'click .index__options__add': 'addUser',
       'click .index__options__delete': 'deleteUsers',
@@ -20,7 +21,7 @@ class UserIndex extends Backbone.View {
   }
 
   render () {
-    this.$el.html(this.template({count: this.collection.length}));
+    this.$el.html(this.template({count: this.count}));
     this.collection.forEach(function (user) {
       if (user.get('deletedAt')) {
         return;
@@ -41,6 +42,8 @@ class UserIndex extends Backbone.View {
       let id = user.parentElement.id
       this.deleteUser(id);
       this.$el.find('ul#' + id).remove();
+      this.count -= 1;
+      this.$el.find('.index__count').html(this.count);
     }.bind(this));
   }
 
@@ -60,6 +63,16 @@ class UserIndex extends Backbone.View {
           alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
         }
       });
+  }
+
+  userCount () {
+    let count = 0;
+    this.collection.each(function (user) {
+      if (!user.get('deletedAt')) {
+        count += 1;
+      }
+    });
+    return count;
   }
 
 
