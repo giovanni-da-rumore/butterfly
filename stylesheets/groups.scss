@@ -35,14 +35,6 @@ $turquoise: #2ce6ce;
     cursor: pointer;
   }
 
-  .checkbox-propre.active {
-    background: #C4C4C4;
-    background: #C4C4C4;
-    height: 8px;
-    width: 8px;
-    border: 2px solid #fff;
-  }
-
   h1 {
     background: #00688B;
     display: block;
@@ -67,6 +59,14 @@ $turquoise: #2ce6ce;
   li.active {
     background: $turquoise;
     color: #00688B;
+
+    .checkbox-propre {
+      background: #C4C4C4;
+      background: #C4C4C4;
+      height: 8px;
+      width: 8px;
+      border: 2px solid #fff;
+    }
   }
 
   div {
@@ -110,11 +110,24 @@ $turquoise: #2ce6ce;
       padding-right: 20px;
       padding-left: 8px;
 
+      .group-name {
+        float: left;
+        height: 21px;
+      }
+
     }
 
     li.active {
       background: $turquoise;
       color: #00688B;
+
+      .checkbox-propre {
+        background: #C4C4C4;
+        background: #C4C4C4;
+        height: 8px;
+        width: 8px;
+        border: 2px solid #fff;
+      }
     }
 
     .checkbox-propre {
@@ -126,16 +139,9 @@ $turquoise: #2ce6ce;
       margin-right: 10px;
     }
 
-    .checkbox-propre.active {
-      background: #C4C4C4;
-      background: #C4C4C4;
-      height: 8px;
-      width: 8px;
-      border: 2px solid #fff;
-    }
   }
 
-  input {
+  .new-group-input {
     width: 250px;
     background: #fff;
     padding: 5px;
@@ -149,7 +155,6 @@ $turquoise: #2ce6ce;
     margin-top: 25px;
     margin-left: 10px;
   }
-
 
 
 }

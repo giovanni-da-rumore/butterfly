@@ -25,12 +25,6 @@
     width: 12px;
     margin-top: 3px;
     cursor: pointer; }
-  .user-groups-modal .checkbox-propre.active {
-    background: #C4C4C4;
-    background: #C4C4C4;
-    height: 8px;
-    width: 8px;
-    border: 2px solid #fff; }
   .user-groups-modal h1 {
     background: #00688B;
     display: block;
@@ -46,6 +40,12 @@
   .user-groups-modal li.active {
     background: #2ce6ce;
     color: #00688B; }
+    .user-groups-modal li.active .checkbox-propre {
+      background: #C4C4C4;
+      background: #C4C4C4;
+      height: 8px;
+      width: 8px;
+      border: 2px solid #fff; }
   .user-groups-modal div {
     float: left;
     margin-right: 8px;
@@ -75,9 +75,18 @@
       padding: 5px 0px;
       padding-right: 20px;
       padding-left: 8px; }
+      .groups-index-main .groups-index li .group-name {
+        float: left;
+        height: 21px; }
     .groups-index-main .groups-index li.active {
       background: #2ce6ce;
       color: #00688B; }
+      .groups-index-main .groups-index li.active .checkbox-propre {
+        background: #C4C4C4;
+        background: #C4C4C4;
+        height: 8px;
+        width: 8px;
+        border: 2px solid #fff; }
     .groups-index-main .groups-index .checkbox-propre {
       height: 12px;
       width: 12px;
@@ -85,13 +94,7 @@
       cursor: pointer;
       float: left;
       margin-right: 10px; }
-    .groups-index-main .groups-index .checkbox-propre.active {
-      background: #C4C4C4;
-      background: #C4C4C4;
-      height: 8px;
-      width: 8px;
-      border: 2px solid #fff; }
-  .groups-index-main input {
+  .groups-index-main .new-group-input {
     width: 250px;
     background: #fff;
     padding: 5px;

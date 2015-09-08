@@ -28,7 +28,7 @@ class GroupsModal extends Backbone.View {
   }
 
   selectGroup (event) {
-    $(event.currentTarget).toggleClass('active');
+    // $(event.currentTarget).toggleClass('active');
     $(event.currentTarget).parent().toggleClass('active');
   }
 

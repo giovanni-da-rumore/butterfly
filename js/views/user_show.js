@@ -13,7 +13,6 @@ class UserShow extends Backbone.View {
     this.profile = options.profile;
     options.collections && this.groups.add(options.collections.groups);
     this.template = _.template($("#user-show-template").html());
-    $('.user-groups-button').on('click', this.addGroups.bind(this));
     this.listenTo(this.model, 'sync', this.render);
     this.events = {
       'submit #normal-form': 'updateInfo',
@@ -136,6 +135,7 @@ class UserShow extends Backbone.View {
     $('.blur-wrapper').toggleClass('active');
     $('.blur-wrapper-sub').toggleClass('active');
     $('.user-groups-modal').toggleClass('active');
+    $('.user-groups-modal').find('li.active').removeClass('active');
   }
 
 }

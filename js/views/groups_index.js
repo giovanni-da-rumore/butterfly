@@ -10,8 +10,10 @@ class GroupsIndex extends Backbone.View {
     this.template = _.template($("#groups-index-template").html());
     this.events = {
       "click .checkbox-propre": "selectGroup",
-      "submit form": "addGroup",
+      "submit #new-group-form": "addGroup",
+      "submit #edit-group-form": "saveEdit",
       "click .index__options__delete": "deleteGroups",
+      "click .index__options__edit": "editGroup",
     }
     this.count = this.groupCount();
     Backbone.View.apply(this);
@@ -24,14 +26,13 @@ class GroupsIndex extends Backbone.View {
         return;
       }
       let string = '<li class="profile__group-item" id="' + group.get('_id');
-      string += '"> <div class="checkbox-propre"></div> ' + group.escape('name') + '</li>'
+      string += '"> <div class="checkbox-propre"></div> <div class="group-name">' + group.escape('name') + '</div></li>'
       this.$el.find('.groups-index').append(string);
     }.bind(this));
     return this;
   }
 
   selectGroup (event) {
-    $(event.currentTarget).toggleClass('active');
     $(event.currentTarget).parent().toggleClass('active');
   }
 
@@ -45,7 +46,6 @@ class GroupsIndex extends Backbone.View {
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/groups/';
     let dataString = JSON.stringify({name: name});
     let that = this;
-    debugger;
     $.ajax({
         type:"POST",
         dataType: 'json',
@@ -63,7 +63,6 @@ class GroupsIndex extends Backbone.View {
       });
 
   }
-
 
   deleteGroups () {
     let $groups = this.$el.find('li.active');
@@ -95,8 +94,61 @@ class GroupsIndex extends Backbone.View {
     });
   }
 
+  editGroup (event) {
+    let $groups = this.$el.find('li.active');
+    $groups.each(function (idx, group) {
+      let $groupName = $(group).find('.group-name');
+      if ($groupName.has('form').length) {
+        return;
+      }
+      let htmlString = '<form id="edit-group-form" data-id="' + group.id + '"><input class="group-edit-input" value="'
+      htmlString += $groupName.html() + '"></form><button></button>';
+      $groupName.html(htmlString);
+      let $input = $(group).find('.group-edit-input');
+      $input.attr('size', $input.val().length);
+    }.bind(this));
+  }
+
+  saveEdit (event) {
+    event.preventDefault();
+    let name = $(event.currentTarget).find('input').val();
+    let id = event.currentTarget.getAttribute('data-id');
+    this.saveEditAjax(id, name);
+    // this.ajaxRequest({data: name, urlAdd: })
+
+  }
+
+  saveEditAjax (id, name) {
+    let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/groups/';
+    url += id;
+    let dataString = JSON.stringify({name: name});
+    let that = this;
+    $.ajax({
+      type:"PUT",
+      dataType: 'json',
+      contentType: "application/json",
+      beforeSend: function (request)
+      {
+          request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
+      },
+      data: dataString,
+      url: url,
+      success: that.editRender.bind(this),
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
+      }
+    });
+  }
+
+  editRender (response) {
+    let $group = this.$el.find('li#' + response.data._id);
+    $group.find('.group-name').html(response.data.name);
+    $group.removeClass('active');
+
+  }
+
+
   refresh (response) {
-    debugger;
     let string = '<li class="profile__group-item" id="' + response.data._id;
     string += '"> <div class="checkbox-propre"></div> ' + response.data.name + '</li>'
     this.$el.find('.groups-index').append(string);
