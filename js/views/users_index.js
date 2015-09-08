@@ -13,8 +13,8 @@ class UserIndex extends Backbone.View {
     options.collections && this.groups.add(options.collections.groups);
     this.template = _.template($("#users-index-template").html());
     this.events = {
-      'click .users-index__options__add': 'addUser',
-      'click .users-index__options__delete': 'deleteUsers',
+      'click .index__options__add': 'addUser',
+      'click .index__options__delete': 'deleteUsers',
     }
     Backbone.View.apply(this);
   }

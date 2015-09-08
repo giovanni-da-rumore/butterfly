@@ -60,16 +60,24 @@ class Router extends Backbone.Router {
 
   userNew () {
     let user = new User();
-    let view = new UserNew({model: user});
+    let that = this;
     $.when(this.syncHelper.syncData()).done(function (data) {
+      let view = new UserNew({model: user, collections: data});
       let groupsView = new GroupsModal({collection: data.groups});
       $('.groups-modal').html(groupsView.render().$el);
+      that.swapViews(view, 'users');
     });
 
-    this.swapViews(view, 'users');
   }
 
   groups (groups) {
+    let that = this;
+    $.when(this.syncHelper.syncData()).done(function (data) {
+      let view = new UserShow({model: user, collections: data});
+      let groupsView = new GroupsModal({collection: data.groups});
+      $('.groups-modal').html(groupsView.render().$el)
+      that.swapViews(view, 'users')
+    });
 
 
   }

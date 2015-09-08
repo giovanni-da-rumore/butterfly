@@ -33,41 +33,41 @@ h3 {
       color: #2ce6ce;
       cursor: pointer; }
 
-.user-profile {
+.user-show {
   width: 900px;
   margin: auto;
   font-size: 14px; }
-  .user-profile .profile__left {
+  .user-show .user-show__left {
     width: 440px;
     float: left;
     color: #A3A3A3;
     margin-top: 10px; }
-  .user-profile .profile__prof-picture {
+  .user-show .user-show__prof-picture {
     float: left;
     width: 420px;
     background: #EDEDED; }
-    .user-profile .profile__prof-picture img {
+    .user-show .user-show__prof-picture img {
       float: left;
       width: 100px;
       height: 100px;
       display: block;
       margin-right: 20px;
       border: 1px solid #EDEDED; }
-    .user-profile .profile__prof-picture .profile__pic-words {
+    .user-show .user-show__prof-picture .user-show__pic-words {
       display: block;
       float: left;
       padding: 8px;
       padding-top: 19px; }
-    .user-profile .profile__prof-picture h3 {
+    .user-show .user-show__prof-picture h3 {
       padding-bottom: 8px; }
-    .user-profile .profile__prof-picture p {
+    .user-show .user-show__prof-picture p {
       color: #A3A3A3; }
-    .user-profile .profile__prof-picture button {
+    .user-show .user-show__prof-picture button {
       font-size: 12px;
       border-bottom: 1px solid #2ce6ce;
       color: #2ce6ce;
       cursor: pointer; }
-  .user-profile .form__button, .user-profile .profile__right .profile__groups button {
+  .user-show .form__button, .user-show .user-show__right .user-show__groups button {
     text-align: center;
     padding: 5px 25px;
     background: #00688B;
@@ -75,26 +75,26 @@ h3 {
     color: #fff;
     cursor: pointer;
     margin-top: 30px; }
-  .user-profile .profile__form {
+  .user-show .user-show__form {
     float: left;
     width: 420px;
     margin-top: 30px; }
-    .user-profile .profile__form h3 {
+    .user-show .user-show__form h3 {
       padding-bottom: 3px;
       border-bottom: 1px solid #ccc;
       width: 420px; }
-    .user-profile .profile__form .profile__form__email {
+    .user-show .user-show__form .user-show__form__email {
       color: #2ce6ce;
       float: left; }
-    .user-profile .profile__form .profile__form__email-sub {
+    .user-show .user-show__form .user-show__form__email-sub {
       font-size: 10px;
       float: left;
       margin-left: 3px; }
-    .user-profile .profile__form label {
+    .user-show .user-show__form label {
       padding-top: 13px;
       display: block;
       font-size: 12px; }
-    .user-profile .profile__form input {
+    .user-show .user-show__form input {
       width: 410px;
       background: #fff;
       padding: 5px;
@@ -102,18 +102,18 @@ h3 {
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 14px; }
-  .user-profile .profile__right {
+  .user-show .user-show__right {
     width: 420px;
     float: left;
     margin-top: 161px;
     margin-top: 40px;
     margin-left: 25px; }
-    .user-profile .profile__right .profile__groups h3 {
+    .user-show .user-show__right .user-show__groups h3 {
       padding-bottom: 3px;
       border-bottom: 1px solid #ccc;
       width: 420px;
       margin-bottom: 32px; }
-    .user-profile .profile__right .profile__groups li {
+    .user-show .user-show__right .user-show__groups li {
       background: #DCDCDC;
       padding: 5px 0px;
       padding-left: 5px;
@@ -123,7 +123,7 @@ h3 {
       margin: 5px 15px;
       margin-left: 0px;
       border-radius: 4px; }
-    .user-profile .profile__right .profile__groups .del-x {
+    .user-show .user-show__right .user-show__groups .del-x {
       color: #fff;
       border-radius: 100%;
       border: 2px solid #fff;

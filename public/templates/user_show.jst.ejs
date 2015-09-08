@@ -1,30 +1,30 @@
 <script type="text/template" id="user-show-template">
 
-	<main class="user-profile group">
+	<main class="user-show group">
 
-  	<section class="profile__left group">
-  	  <form class="profile__form" id="normal-form">
-  			<h3 class="profile__form-h3"> Basic information</h3>
-  			<label class="profile__form-label">
+  	<section class="user-show__left group">
+  	  <form class="user-show__form" id="normal-form">
+  			<h3 class="user-show__form-h3"> Basic information</h3>
+  			<label class="user-show__form-label">
   				First Name*
   				<input type="text" name="user[firstName]" value="<%= user.escape('firstName')%>">
   			</label>
 
-  			<label class="profile__form-label">
+  			<label class="user-show__form-label">
   				Last Name*
   				<input type="text" name="user[lastName]" value="<%= user.escape('lastName') %>">
   			</label>
 
-  			<label class="profile__form-label">
+  			<label class="user-show__form-label">
   				Company Title*
   				<input type="text" name="user[title]" value="<%= user.escape('title') %>">
   			</label>
 
-  			<label class="profile__form-label">
-  				<div class="profile__form__email">
+  			<label class="user-show__form-label">
+  				<div class="user-show__form__email">
   					Email*
   				</div>
-  				<div class="profile__form__email-sub">
+  				<div class="user-show__form__email-sub">
   					(= User Name)
   				</div>
   				<input type="text" name="user[email]" value="<%= user.escape('email') %>">
@@ -33,9 +33,9 @@
   		</form>
 
 			<% if (profile) { %>
-				<form class="profile__form" id="password-form">
-		      <h3 class="profile__form-h3"> Change passowrd</h3>
-		      <label class="profile__form--label">
+				<form class="user-show__form" id="password-form">
+		      <h3 class="user-show__form-h3"> Change passowrd</h3>
+		      <label class="user-show__form--label">
 		        Type your new password
 		        <input type="password" name="user[password]" value="">
 		      </label>
@@ -44,10 +44,10 @@
 			<% } %>
 		</section>
 
-		<section class="profile__right group">
-			<section class="profile__groups group">
-				<h3 class="profile__form-h3"> Groups </h3>
-				<ul class="profile__groups-list group">
+		<section class="user-show__right group">
+			<section class="user-show__groups group">
+				<h3 class="user-show__form-h3"> Groups </h3>
+				<ul class="user-show__groups-list group">
 				</ul>
 				<button class="form__button" id="groups-button"> ADD/REMOVE GROUPS </button>
 			</section>

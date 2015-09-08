@@ -41,7 +41,7 @@ $(() => {
   promises.push( createLoadPromise('templates/nav_bar.jst.ejs', '#nav-template-holder'));
   promises.push( createLoadPromise('templates/groups_modal.jst.ejs', '#groups-modal-template-holder'));
 
-  $.when.apply( null, promises ).done( function() {
+  $.when.apply( this, promises ).done( function() {
       new Butterfly();
   });
 

@@ -1,26 +1,33 @@
 import Groups from '../collections/groups';
 import GroupItem from './group_item';
+import UserShow from './user_show';
 
-class UserNew extends Backbone.View {
+class UserNew extends UserShow {
 
 
   constructor (options) {
-    super();
+
+    super(options);
     this.model = options.model;
     this.groups = new Groups();
     options.collections && this.groups.add(options.collections.groups);
     this.template = _.template($("#user-show-template").html());
     this.events = {
       "submit form": "create",
+      "keyup input": "storeFormData",
     }
     Backbone.View.apply(this);
 
   }
 
-  render () {
-    this.$el.html(this.template({user: this.model, profile: false}));
-    return this;
+  storeFormData (event) {
+    let value = $(event.currentTarget).val();
+    let name = event.currentTarget.name.slice(5,-1);
+    this.model.attributes[name] = value;
+  }
 
+  updateInfo () {
+    return
   }
 
 
@@ -28,6 +35,7 @@ class UserNew extends Backbone.View {
     event.preventDefault();
     let that = this;
     let data = $(event.currentTarget).serializeJSON().user;
+    data.groupIds = this.model.get('groupIds');
     let dataString = JSON.stringify(data);
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users';
     $.ajax({
@@ -48,10 +56,7 @@ class UserNew extends Backbone.View {
   }
 
   refresh (response) {
-    this.model.set(response.data);
-    debugger;
-    alert("Success!")
-    this.render();
+    Backbone.history.navigate('#/users/' + response.data._id, {trigger: true});
 
   }
 

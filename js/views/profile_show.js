@@ -30,10 +30,12 @@ class ProfileShow extends Backbone.View {
 
   updatePassowrd (event) {
     event.preventDefault();
+    if ($('.user-groups-modal').hasClass('active')) {
+      return;
+    }
     let that = this;
     let data = $(event.currentTarget).serializeJSON().user;
     let dataString = JSON.stringify(data);
-    debugger;
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/user';
     $.ajax({
         type:"PUT",
@@ -55,7 +57,6 @@ class ProfileShow extends Backbone.View {
   refresh () {
     alert("Succès!");
     this.render();
-
   }
 
 }

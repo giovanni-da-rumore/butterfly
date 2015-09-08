@@ -1,4 +1,4 @@
-.users-index-header {
+.index-header {
 
   width: 930px;
   margin: auto;
@@ -14,13 +14,13 @@
 
   }
 
-  .users-index__count {
+  .index__count {
     float: right;
     color: #2ce6ce;
     margin-left: 8px;
   }
 
-  .users-index__options {
+  .index__options {
     float: right;
 
     li {
@@ -31,7 +31,7 @@
       cursor: pointer;
     }
 
-    .users-index__options__add {
+    .index__options__add {
       border-right: none;
     }
   }
