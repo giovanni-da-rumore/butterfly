@@ -19,8 +19,16 @@ class UserShow extends Backbone.View {
       'submit #normal-form': 'updateInfo',
       'click .del-x': 'deleteGroup',
       'click #groups-button': "groupsModal",
+      "keyup input": "storeFormData",
     }
     Backbone.View.apply(this);
+  }
+
+
+  storeFormData (event) {
+    let value = $(event.currentTarget).val();
+    let name = event.currentTarget.name.slice(5,-1);
+    this.model.attributes[name] = value;
   }
 
   render () {
@@ -28,7 +36,6 @@ class UserShow extends Backbone.View {
     if (!this.model.get('groupIds')) {
       return this;
     }
-    debugger;
     this.model.get('groupIds').forEach(function (groupId) {
       let group = this.groupById(groupId);
       if (group) {
@@ -59,7 +66,6 @@ class UserShow extends Backbone.View {
     let data = $(event.currentTarget).serializeJSON().user;
     data.groupIds = this.model.get('groupIds');
     let dataString = JSON.stringify(data);
-    debugger;
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users/';
     url += this.model.get('_id');
     $.ajax({
@@ -111,10 +117,10 @@ class UserShow extends Backbone.View {
   addGroups (event) {
     let $groups = $(event.currentTarget).parent().find('li.active');
     $groups.each(function (index, group) {
-      if (this.model.attributes.groupIds && this.model.attributes.groupIds.indexOf(group.id) < 0) {
-        this.model.attributes.groupIds.push(group.id);
-      } else {
+      if (!this.model.attributes.groupIds) {
         this.model.attributes.groupIds = [group.id];
+      } else if (this.model.attributes.groupIds.indexOf(group.id) < 0) {
+        this.model.attributes.groupIds.push(group.id);
       }
     }.bind(this));
     this.toggleBlur();

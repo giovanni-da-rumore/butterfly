@@ -4,8 +4,9 @@ import User from '../models/user';
 import UserShow from '../views/user_show';
 import UserNew from '../views/user_new';
 import ProfileShow from '../views/profile_show';
-import GroupsModal from '../views/groups_modal';
 import UsersIndex from '../views/users_index';
+import GroupsIndex from '../views/groups_index';
+import GroupsModal from '../views/groups_modal';
 
 
 class Router extends Backbone.Router {
@@ -73,15 +74,10 @@ class Router extends Backbone.Router {
   groups (groups) {
     let that = this;
     $.when(this.syncHelper.syncData()).done(function (data) {
-      let view = new UserShow({model: user, collections: data});
-      let groupsView = new GroupsModal({collection: data.groups});
-      $('.groups-modal').html(groupsView.render().$el)
-      that.swapViews(view, 'users')
+      let view = new GroupsIndex({collection: data.groups});
+      that.swapViews(view, 'groups');
     });
-
-
   }
-
 
   swapViews (view, page) {
     this._nav = new NavBar({page: page});

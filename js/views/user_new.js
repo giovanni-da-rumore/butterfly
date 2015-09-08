@@ -14,17 +14,17 @@ class UserNew extends UserShow {
     this.template = _.template($("#user-show-template").html());
     this.events = {
       "submit form": "create",
-      "keyup input": "storeFormData",
+      // "keyup input": "storeFormData",
     }
     Backbone.View.apply(this);
 
   }
 
-  storeFormData (event) {
-    let value = $(event.currentTarget).val();
-    let name = event.currentTarget.name.slice(5,-1);
-    this.model.attributes[name] = value;
-  }
+  // storeFormData (event) {
+  //   let value = $(event.currentTarget).val();
+  //   let name = event.currentTarget.name.slice(5,-1);
+  //   this.model.attributes[name] = value;
+  // }
 
   updateInfo () {
     return

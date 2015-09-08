@@ -4,6 +4,16 @@ h3  {
     font-size: 16px;
   }
 
+.form__button {
+  text-align: center;
+  padding: 5px 25px;
+  background: #00688B;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
 .user-profile-header {
   width: 900px;
   margin: auto;
@@ -104,15 +114,15 @@ h3  {
       }
     }
 
-    .form__button {
-      text-align: center;
-      padding: 5px 25px;
-      background: #00688B;
-      border-radius: 4px;
-      color: #fff;
-      cursor: pointer;
-      margin-top: 30px;
-    }
+    // .form__button {
+    //   text-align: center;
+    //   padding: 5px 25px;
+    //   background: #00688B;
+    //   border-radius: 4px;
+    //   color: #fff;
+    //   cursor: pointer;
+    //   margin-top: 30px;
+    // }
 
     .user-show__form {
 

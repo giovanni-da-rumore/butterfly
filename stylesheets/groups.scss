@@ -1,0 +1,155 @@
+
+$turquoise: #2ce6ce;
+
+
+.groups-list-item {
+  background: #DCDCDC;
+  padding: 5px 0px;
+  padding-left: 5px;
+  padding-right: 15px;
+  text-align: center;
+  float: left;
+  margin: 5px 15px;
+  margin-left: 0px;
+  border-radius: 4px;
+}
+
+
+.user-groups-modal {
+
+  position: absolute;
+  width: 435px;
+  background: #fff;
+  top: -700px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 10000;
+  transition: top 0.3s;
+
+  .checkbox-propre {
+    height: 12px;
+    width: 12px;
+    margin-top: 3px;
+    cursor: pointer;
+  }
+
+  .checkbox-propre.active {
+    background: #C4C4C4;
+    background: #C4C4C4;
+    height: 8px;
+    width: 8px;
+    border: 2px solid #fff;
+  }
+
+  h1 {
+    background: #00688B;
+    display: block;
+    width: 435px;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  ul {
+    width: 325px;
+    margin: auto;
+  }
+
+  li {
+    @extend .groups-list-item;
+
+  }
+
+  li.active {
+    background: $turquoise;
+    color: #00688B;
+  }
+
+  div {
+    float: left;
+    margin-right: 8px;
+    margin-left: 5px;
+  }
+
+  button {
+    text-align: center;
+    padding: 5px 25px;
+    background: #00688B;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 170px;
+    margin-top: 18px;
+    margin-bottom: 15px;
+  }
+
+}
+
+.user-groups-modal.active {
+  top: 200px;
+}
+
+
+.groups-index-main {
+  width: 930px;
+  margin: auto;
+
+
+  .groups-index {
+    width: 800px;
+    float: left;
+    margin-top: 20px;
+
+    li {
+      @extend .groups-list-item;
+      padding: 5px 0px;
+      padding-right: 20px;
+      padding-left: 8px;
+
+    }
+
+    li.active {
+      background: $turquoise;
+      color: #00688B;
+    }
+
+    .checkbox-propre {
+      height: 12px;
+      width: 12px;
+      margin-top: 3px;
+      cursor: pointer;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .checkbox-propre.active {
+      background: #C4C4C4;
+      background: #C4C4C4;
+      height: 8px;
+      width: 8px;
+      border: 2px solid #fff;
+    }
+  }
+
+  input {
+    width: 250px;
+    background: #fff;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .form__button {
+    margin-top: 25px;
+    margin-left: 10px;
+  }
+
+
+
+}

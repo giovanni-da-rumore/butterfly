@@ -2,6 +2,15 @@ h3 {
   color: #05B8CC;
   font-size: 16px; }
 
+.form__button, .user-show .user-show__right .user-show__groups button {
+  text-align: center;
+  padding: 5px 25px;
+  background: #00688B;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 30px; }
+
 .user-profile-header {
   width: 900px;
   margin: auto;
@@ -67,14 +76,6 @@ h3 {
       border-bottom: 1px solid #2ce6ce;
       color: #2ce6ce;
       cursor: pointer; }
-  .user-show .form__button, .user-show .user-show__right .user-show__groups button {
-    text-align: center;
-    padding: 5px 25px;
-    background: #00688B;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    margin-top: 30px; }
   .user-show .user-show__form {
     float: left;
     width: 420px;
