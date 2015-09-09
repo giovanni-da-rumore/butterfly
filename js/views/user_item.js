@@ -1,6 +1,5 @@
 class UserItem extends Backbone.View {
 
-
   constructor (options) {
     super();
     this.model = options.model;
@@ -54,10 +53,6 @@ class UserItem extends Backbone.View {
   editUser (event) {
     Backbone.history.navigate('#/users/' + this.model.get('_id'), {trigger: true});
   }
-
-
-
-
 }
 
 export default UserItem;

@@ -4,7 +4,6 @@ import UserShow from "./user_show";
 
 class ProfileShow extends Backbone.View {
 
-
   constructor (options) {
     super();
     this.model = options.model;
@@ -16,7 +15,7 @@ class ProfileShow extends Backbone.View {
     this.listenTo(this.model, 'sync', this.render);
     this.events = {
       'submit #password-form': 'updatePassowrd',
-      'click #dropzone-prof-pic': 'clearZone',
+      'click #dropzone-prof-pic': 'clearPicZone',
     }
 
     Dropzone.options.dropzoneProfPic = {
@@ -29,7 +28,6 @@ class ProfileShow extends Backbone.View {
       },
     }
     Backbone.View.apply(this);
-
   }
 
   render () {
@@ -54,15 +52,14 @@ class ProfileShow extends Backbone.View {
     }
   }
 
-
   savePicture () {
     let $img = $('.dz-image').children();
     let picture = $img.attr('src');
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/user'
+    let dataString = JSON.stringify({picture: picture});
     let that = this;
-    let dataString = JSON.stringify({picture: picture})
     $.ajax({
-      type:"PUT",
+      type: "PUT",
       dataType: 'json',
       contentType: "application/json",
       beforeSend: function (request)
@@ -71,7 +68,7 @@ class ProfileShow extends Backbone.View {
       },
       url: url,
       data: dataString,
-      success: that.pictureSaved.bind(this),
+      success: that.pictureSaved.bind(that),
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
       }
@@ -89,43 +86,34 @@ class ProfileShow extends Backbone.View {
     let dataString = JSON.stringify(data);
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/user';
     $.ajax({
-        type:"PUT",
-        dataType: 'json',
-        contentType: "application/json",
-        beforeSend: function (request)
-        {
-            request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
-        },
-        url: url,
-        data: dataString,
-        success: that.refresh.bind(this),
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
-        }
-      });
-  }
-
-  refresh () {
-    alert("Succès!");
-    this.render();
+      type: "PUT",
+      dataType: 'json',
+      contentType: "application/json",
+      beforeSend: function (request)
+      {
+          request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
+      },
+      url: url,
+      data: dataString,
+      success: that.render.bind(that),
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
+      }
+    });
   }
 
   pictureSaved (response) {
     this.$el.find('.profile__pic').attr('src', response.data.picture);
     this.model.set({picture: response.data.picture});
-    this.clearZone();
-
-
+    this.clearPicZone();
   }
 
-  clearZone (event) {
+  clearPicZone (event) {
     if (!event || event.target.id === "dropzone-prof-pic") {
       this.$el.find('#dropzone-prof-pic').children().remove();
       this.$el.find('.save-pic').remove();
     }
   }
-
-
 }
 
 export default ProfileShow;

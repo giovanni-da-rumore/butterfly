@@ -2,7 +2,6 @@ import Groups from '../collections/groups';
 
 class GroupsIndex extends Backbone.View {
 
-
   constructor (options) {
     super();
     this.collection = new Groups();
@@ -13,7 +12,7 @@ class GroupsIndex extends Backbone.View {
       "submit #new-group-form": "addGroup",
       "submit #edit-group-form": "saveEdit",
       "click .index__options__delete": "deleteGroups",
-      "click .index__options__edit": "editGroup",
+      "click .index__options__edit": "renderEdit",
     }
     this.count = this.groupCount();
     Backbone.View.apply(this);
@@ -45,23 +44,21 @@ class GroupsIndex extends Backbone.View {
   createGroup (name) {
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/groups/';
     let dataString = JSON.stringify({name: name});
-    let that = this;
     $.ajax({
-        type:"POST",
-        dataType: 'json',
-        contentType: "application/json",
-        beforeSend: function (request)
-        {
-            request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
-        },
-        data: dataString,
-        url: url,
-        success: that.refresh.bind(this),
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
-        }
-      });
-
+      type:"POST",
+      dataType: 'json',
+      contentType: "application/json",
+      beforeSend: function (request)
+      {
+          request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
+      },
+      data: dataString,
+      url: url,
+      success: this.refresh.bind(this),
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
+      }
+    });
   }
 
   deleteGroups () {
@@ -73,8 +70,6 @@ class GroupsIndex extends Backbone.View {
       this.count -= 1;
       this.$el.find('.index__count').html(this.count);
     }.bind(this));
-
-
   }
 
   deleteGroup (id) {
@@ -94,7 +89,7 @@ class GroupsIndex extends Backbone.View {
     });
   }
 
-  editGroup (event) {
+  renderEdit (event) {
     let $groups = this.$el.find('li.active');
     $groups.each(function (idx, group) {
       let $groupName = $(group).find('.group-name');
@@ -113,16 +108,8 @@ class GroupsIndex extends Backbone.View {
     event.preventDefault();
     let name = $(event.currentTarget).find('input').val();
     let id = event.currentTarget.getAttribute('data-id');
-    this.saveEditAjax(id, name);
-    // this.ajaxRequest({data: name, urlAdd: })
-
-  }
-
-  saveEditAjax (id, name) {
-    let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/groups/';
-    url += id;
+    let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/groups/' + id;
     let dataString = JSON.stringify({name: name});
-    let that = this;
     $.ajax({
       type:"PUT",
       dataType: 'json',
@@ -133,20 +120,18 @@ class GroupsIndex extends Backbone.View {
       },
       data: dataString,
       url: url,
-      success: that.editRender.bind(this),
+      success: this.renderSavedEdit.bind(this),
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
       }
     });
   }
 
-  editRender (response) {
+  renderSavedEdit (response) {
     let $group = this.$el.find('li#' + response.data._id);
     $group.find('.group-name').html(response.data.name);
     $group.removeClass('active');
-
   }
-
 
   refresh (response) {
     let string = '<li class="profile__group-item" id="' + response.data._id;
@@ -165,10 +150,6 @@ class GroupsIndex extends Backbone.View {
     });
     return count;
   }
-
-
-
-
 }
 
 export default GroupsIndex;

@@ -8,7 +8,6 @@ import UsersIndex from '../views/users_index';
 import GroupsIndex from '../views/groups_index';
 import GroupsModal from '../views/groups_modal';
 
-
 class Router extends Backbone.Router {
 
   constructor (options) {
@@ -39,44 +38,40 @@ class Router extends Backbone.Router {
   }
 
   users () {
-    let that = this;
     $.when(this.syncHelper.syncData()).done(function (data) {
       let view = new UsersIndex({collections: data});
-      that.swapViews(view, 'users');
+      this.swapViews(view, 'users');
       let groupsView = new GroupsModal({collection: data.groups});
       $('.groups-modal').html(groupsView.render().$el);
-    });
+    }.bind(this));
   }
 
   userShow (id) {
-    let that = this;
     $.when(this.syncHelper.syncData()).done(function (data) {
       let user = new User(that.getUser(id, data));
       let view = new UserShow({model: user, collections: data});
       let groupsView = new GroupsModal({collection: data.groups});
       $('.groups-modal').html(groupsView.render().$el)
-      that.swapViews(view, 'users')
-    });
+      this.swapViews(view, 'users')
+    }.bind(this));
   }
 
   userNew () {
     let user = new User();
-    let that = this;
     $.when(this.syncHelper.syncData()).done(function (data) {
       let view = new UserNew({model: user, collections: data});
       let groupsView = new GroupsModal({collection: data.groups});
       $('.groups-modal').html(groupsView.render().$el);
-      that.swapViews(view, 'users');
-    });
+      this.swapViews(view, 'users');
+    }.bind(this));
 
   }
 
   groups (groups) {
-    let that = this;
     $.when(this.syncHelper.syncData()).done(function (data) {
       let view = new GroupsIndex({collection: data.groups});
-      that.swapViews(view, 'groups');
-    });
+      this.swapViews(view, 'groups');
+    }.bind(this));
   }
 
   swapViews (view, page) {
@@ -87,7 +82,6 @@ class Router extends Backbone.Router {
     this.$rootEl.html(view.render().$el);
   }
 
-
   getUser (id, data) {
     let users = data.users;
     for (var i = 0; i < users.length; i++) {
@@ -96,8 +90,6 @@ class Router extends Backbone.Router {
       }
     }
   }
-
-
 };
 
 export default Router;

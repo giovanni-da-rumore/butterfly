@@ -5,7 +5,6 @@ import GroupsModal from './groups_modal';
 
 class UserShow extends Backbone.View {
 
-
   constructor (options) {
     super();
     this.model = options.model;
@@ -22,7 +21,6 @@ class UserShow extends Backbone.View {
     }
     Backbone.View.apply(this);
   }
-
 
   storeFormData (event) {
     let value = $(event.currentTarget).val();
@@ -71,27 +69,26 @@ class UserShow extends Backbone.View {
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users/';
     url += this.model.get('_id');
     $.ajax({
-        type:"PUT",
-        dataType: 'json',
-        contentType: "application/json",
-        beforeSend: function (request)
-        {
-            request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
-        },
-        url: url,
-        data: dataString,
-        success: that.refresh.bind(this),
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
-        }
-      });
+      type:"PUT",
+      dataType: 'json',
+      contentType: "application/json",
+      beforeSend: function (request)
+      {
+          request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
+      },
+      url: url,
+      data: dataString,
+      success: that.refresh.bind(this),
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
+      }
+    });
   }
 
   refresh (response) {
     alert("Succès!")
     this.model.set(response.data);
     this.render();
-
   }
 
   deleteGroup (event) {

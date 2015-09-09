@@ -1,7 +1,6 @@
 
 $turquoise: #2ce6ce;
 
-
 .groups-list-item {
   background: #DCDCDC;
   padding: 5px 0px;
@@ -14,9 +13,7 @@ $turquoise: #2ce6ce;
   border-radius: 4px;
 }
 
-
 .user-groups-modal {
-
   position: absolute;
   width: 435px;
   background: #fff;
@@ -53,7 +50,6 @@ $turquoise: #2ce6ce;
 
   li {
     @extend .groups-list-item;
-
   }
 
   li.active {
@@ -93,11 +89,9 @@ $turquoise: #2ce6ce;
   top: 200px;
 }
 
-
 .groups-index-main {
   width: 930px;
   margin: auto;
-
 
   .groups-index {
     width: 800px;
@@ -155,6 +149,4 @@ $turquoise: #2ce6ce;
     margin-top: 25px;
     margin-left: 10px;
   }
-
-
 }

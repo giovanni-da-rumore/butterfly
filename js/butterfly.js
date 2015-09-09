@@ -17,7 +17,6 @@ class Butterfly {
 }
 
 $(() => {
-
   Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
@@ -32,7 +31,7 @@ $(() => {
     }).promise();
   }
 
-  var promises = [ ];
+  let promises = [ ];
 
   promises.push( createLoadPromise('templates/user_show.jst.ejs', '#user-show-template-holder') );
   promises.push( createLoadPromise('templates/user_profile.jst.ejs', '#user-prof-template-holder'));
@@ -42,7 +41,7 @@ $(() => {
   promises.push( createLoadPromise('templates/groups_modal.jst.ejs', '#groups-modal-template-holder'));
   promises.push( createLoadPromise('templates/groups_index.jst.ejs', '#groups-index-template-holder'));
 
-  $.when.apply( this, promises ).done( function() {
+  $.when.apply(this, promises).done(function() {
       new Butterfly();
   });
 

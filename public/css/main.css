@@ -66,7 +66,6 @@ body {
   .navbar li {
     float: left;
     border-left: 1px solid #D3D3D3;
-    background: #E3E3E3;
     background: #EDEDED;
     padding: 3px 7px;
     cursor: pointer;

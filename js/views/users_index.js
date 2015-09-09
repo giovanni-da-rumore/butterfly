@@ -52,18 +52,18 @@ class UserIndex extends Backbone.View {
   deleteUser (id) {
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users/' + id;
     $.ajax({
-        type:"DELETE",
-        dataType: 'json',
-        contentType: "application/json",
-        beforeSend: function (request)
-        {
-            request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
-        },
-        url: url,
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-          alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
-        }
-      });
+      type:"DELETE",
+      dataType: 'json',
+      contentType: "application/json",
+      beforeSend: function (request)
+      {
+          request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
+      },
+      url: url,
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
+      }
+    });
   }
 
 
@@ -73,14 +73,6 @@ class UserIndex extends Backbone.View {
     if ($user.attr('id')) {
       Backbone.history.navigate("#/users/" + $user.attr('id'));
     }
-    // $users.each(function (idx, user) {
-    //   let id = user.parentElement.id
-    //   this.deleteUser(id);
-    //   this.$el.find('ul#' + id).remove();
-    //   this.count -= 1;
-    //   this.$el.find('.index__count').html(this.count);
-    // }.bind(this));
-
   }
 
   userCount () {
@@ -92,8 +84,6 @@ class UserIndex extends Backbone.View {
     });
     return count;
   }
-
-
 
 }
 

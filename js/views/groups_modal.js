@@ -2,7 +2,6 @@ import Groups from '../collections/groups';
 
 class GroupsModal extends Backbone.View {
 
-
   constructor (options) {
     super();
     this.collection = new Groups();
@@ -28,10 +27,8 @@ class GroupsModal extends Backbone.View {
   }
 
   selectGroup (event) {
-    // $(event.currentTarget).toggleClass('active');
     $(event.currentTarget).parent().toggleClass('active');
   }
-
 }
 
 export default GroupsModal;

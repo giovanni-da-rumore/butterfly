@@ -1,7 +1,6 @@
 <script type="text/template" id="user-show-template">
 
 	<main class="user-show group">
-
   	<section class="user-show__left group">
   	  <form class="user-show__form" id="normal-form">
   			<h3 class="user-show__form-h3"> Basic information</h3>
@@ -9,17 +8,14 @@
   				First Name*
   				<input type="text" name="user[firstName]" value="<%= user.escape('firstName')%>">
   			</label>
-
   			<label class="user-show__form-label">
   				Last Name*
   				<input type="text" name="user[lastName]" value="<%= user.escape('lastName') %>">
   			</label>
-
   			<label class="user-show__form-label">
   				Company Title*
   				<input type="text" name="user[title]" value="<%= user.escape('title') %>">
   			</label>
-
   			<label class="user-show__form-label">
   				<div class="user-show__form__email">
   					Email*
@@ -43,7 +39,7 @@
 		    </form>
 			<% } %>
 		</section>
-
+		
 		<section class="user-show__right group">
 			<section class="user-show__groups group">
 				<h3 class="user-show__form-h3"> Groups </h3>

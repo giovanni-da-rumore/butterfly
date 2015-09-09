@@ -16,7 +16,6 @@
   border: 2px solid #fff;
 }
 
-
 .user-item {
   width: 930px;
   background: #EDEDED;
@@ -24,25 +23,6 @@
 
   .user-item__checkbox {
     cursor: pointer;
-
-  }
-
-  .checkbox-propre {
-    height: 10px;
-    width: 10px;
-    background: #fff;
-    margin: 4px 2px;
-    margin-left: -1px;
-    border-radius: 3px;
-
-  }
-
-  .checkbox-propre.active {
-    background: #C4C4C4;
-    background: #C4C4C4;
-    height: 6px;
-    width: 6px;
-    border: 2px solid #fff;
   }
 
   li {
@@ -91,5 +71,4 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
 }

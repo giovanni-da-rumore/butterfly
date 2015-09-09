@@ -22,13 +22,11 @@ class NavBar extends Backbone.View {
     let $newPage = $(event.currentTarget);
     let url = $newPage.attr('id').split("-")[1];
     Backbone.history.navigate('#/' + url, {trigger: true})
-
   }
 
   clickEvents () {
     this.$el.on('click', 'li', this.changePage);
   }
-
 }
 
 export default NavBar;
