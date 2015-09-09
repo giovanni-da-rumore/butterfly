@@ -30,6 +30,11 @@ class UserNew extends UserShow {
   }
 
   newPage (response) {
+    $('.success').addClass('active');
+    let successFlash = window.setInterval((function() {
+        $('.success').removeClass('active');
+        clearInterval(successFlash);
+    }).bind(this), 1000);
     Backbone.history.navigate('#/users/' + response.data._id, {trigger: true});
   }
 

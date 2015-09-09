@@ -70,8 +70,12 @@ class UserShow extends Backbone.View {
   }
 
   refresh (response) {
-    alert("Succès!")
     this.model.set(response.data);
+    $('.success').addClass('active');
+    let successFlash = window.setInterval((function() {
+        $('.success').removeClass('active');
+        clearInterval(successFlash);
+    }).bind(this), 1000);
     this.render();
   }
 

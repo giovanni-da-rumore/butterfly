@@ -32,6 +32,31 @@ body {
 
 $turquoise:  #2ce6ce;
 
+
+.success-holder {
+  margin: auto;
+  width: 110px;
+}
+
+.success {
+  padding-top: 90px;
+  position: absolute;
+  font-size: 30px;
+  color: #05B8CC;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.success.active {
+  opacity: 1;
+  transition: opacity 0.2s;
+
+}
+
+
+
+
+
 .blur-wrapper.active {
   background: $turquoise;
   opacity: 0.9;
