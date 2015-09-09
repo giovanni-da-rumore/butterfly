@@ -66,23 +66,7 @@ class UserShow extends Backbone.View {
     let data = $(event.currentTarget).serializeJSON().user;
     data.groupIds = this.model.get('groupIds');
     let dataString = JSON.stringify(data);
-    let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users/';
-    url += this.model.get('_id');
-    $.ajax({
-      type:"PUT",
-      dataType: 'json',
-      contentType: "application/json",
-      beforeSend: function (request)
-      {
-          request.setRequestHeader("Authorization", 'Bearer 4ec7d609-bdf1-4de4-b2e6-4ac59f61ac40');
-      },
-      url: url,
-      data: dataString,
-      success: that.refresh.bind(this),
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
-      }
-    });
+    this.model.update(dataString, this.refresh.bind(this));
   }
 
   refresh (response) {

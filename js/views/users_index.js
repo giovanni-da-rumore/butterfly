@@ -48,7 +48,6 @@ class UserIndex extends Backbone.View {
     }.bind(this));
   }
 
-
   deleteUser (id) {
     let url = 'http://b2b-server2-staging.elasticbeanstalk.com/api/admin/users/' + id;
     $.ajax({
@@ -65,7 +64,6 @@ class UserIndex extends Backbone.View {
       }
     });
   }
-
 
   editUser () {
     let $users = this.$el.find('.active');

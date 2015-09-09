@@ -26,15 +26,14 @@ class Router extends Backbone.Router {
   }
 
   profile () {
-    let that = this;
     let user = new User();
     user.fetch();
-    $.when(this.syncHelper.groups()).done(function (data) {
+    $.when(this.syncHelper.syncData()).done(function (data) {
       let view = new ProfileShow({model: user, collections: data});
-      that.swapViews(view, 'profile');
+      this.swapViews(view, 'profile');
       let groupsView = new GroupsModal({collection: data.groups});
       $('.groups-modal').html(groupsView.render().$el);
-    });
+    }.bind(this));
   }
 
   users () {
@@ -48,7 +47,7 @@ class Router extends Backbone.Router {
 
   userShow (id) {
     $.when(this.syncHelper.syncData()).done(function (data) {
-      let user = new User(that.getUser(id, data));
+      let user = new User(this.getUser(id, data));
       let view = new UserShow({model: user, collections: data});
       let groupsView = new GroupsModal({collection: data.groups});
       $('.groups-modal').html(groupsView.render().$el)
