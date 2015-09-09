@@ -17,6 +17,7 @@ class UserIndex extends Backbone.View {
       'click .index__options__add': 'addUser',
       'click .index__options__delete': 'deleteUsers',
       'click .index__options__edit': 'editUser',
+      "click .check-all": "checkAll",
     }
     Backbone.View.apply(this);
   }
@@ -71,6 +72,10 @@ class UserIndex extends Backbone.View {
     if ($user.attr('id')) {
       Backbone.history.navigate("#/users/" + $user.attr('id'));
     }
+  }
+
+  checkAll () {
+    this.$el.find('.checkbox-propre').toggleClass('active');
   }
 
   userCount () {
