@@ -52,13 +52,26 @@ h3  {
         color: #A3A3A3;
       }
 
-      button {
+      #dropzone-prof-pic {
         font-size: 12px;
         border-bottom: 1px solid #2ce6ce;
         color: #2ce6ce;
         cursor: pointer;
+        display: inline;
       }
+
+      .save-pic {
+        margin-top: 25px;
+        font-size: 16px;
+        color: #2ce6ce;
+        cursor: pointer;
+      }
+
     }
+
+
+
+
   }
 
 .user-show {

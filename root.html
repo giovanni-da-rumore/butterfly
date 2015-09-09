@@ -7,15 +7,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/profile.css"/>
     <link rel="stylesheet" href="css/users_index.css"/>
     <link rel="stylesheet" href="css/user_item.css"/>
     <link rel="stylesheet" href="css/groups.css"/>
 		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-		<script src="lib/jquery.serializejson.min.js">
-
-		</script>
+		<script src="lib/jquery.serializejson.min.js"></script>
+		<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <script src="dist/output.js"></script>
 	</head>
 	<body>
@@ -41,8 +41,9 @@
 			</div>
 		</div>
 
-
-		<script type="text/javascript">
-		</script>
-
+	<script>
+		$(document).ready(function () {
+				Dropzone.autoDiscover = false;
+		});
+	</script>
 </body>

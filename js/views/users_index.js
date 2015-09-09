@@ -16,6 +16,7 @@ class UserIndex extends Backbone.View {
     this.events = {
       'click .index__options__add': 'addUser',
       'click .index__options__delete': 'deleteUsers',
+      'click .index__options__edit': 'editUser',
     }
     Backbone.View.apply(this);
   }
@@ -63,6 +64,23 @@ class UserIndex extends Backbone.View {
           alert("Errr... this is awkward. Something's wrong \n" + textStatus + ": " + errorThrown);
         }
       });
+  }
+
+
+  editUser () {
+    let $users = this.$el.find('.active');
+    let $user = $users.first().parent();
+    if ($user.attr('id')) {
+      Backbone.history.navigate("#/users/" + $user.attr('id'));
+    }
+    // $users.each(function (idx, user) {
+    //   let id = user.parentElement.id
+    //   this.deleteUser(id);
+    //   this.$el.find('ul#' + id).remove();
+    //   this.count -= 1;
+    //   this.$el.find('.index__count').html(this.count);
+    // }.bind(this));
+
   }
 
   userCount () {
